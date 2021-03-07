@@ -55,7 +55,7 @@
             .then((willDelete) => {
                 if (willDelete) {
                     swal({
-                        title: "Gotcha!",
+                        title: "Berhasil !",
                         text: "Berhasil Logout",
                         icon: "success",
                     }).then((redirect) => {

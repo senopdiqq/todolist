@@ -67,7 +67,7 @@
                                 <?php endif; ?>
                                 <?php if ($this->session->userdata('idRole') == '2') : ?>
                                     <li class="nav-item">
-                                        <a class="nav-link " href="<?= base_url('list_tindakan.php') ?>" title="Tindakan">
+                                        <a class="nav-link " href="<?= base_url('dashboard/petugas/kecamatan') ?>" title="Tindakan">
                                             <span class="tio-circle nav-indicator-icon"></span>
                                             <span class="text-truncate">Daftar Kecamatan</span>
                                         </a>

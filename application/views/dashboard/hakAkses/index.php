@@ -114,7 +114,7 @@
                                     <a href="<?= base_url('') ?>" class="badge badge-soft-success p-2 btn-edit" data-nama="<?= $p->nama_role ?>" data-id="<?= $p->idRole ?>" data-toggle="modal" data-target="#ModalEdit">
                                         <i class=" tio-edit"></i>
                                         Edit</a>
-                                    <a href="<?= base_url('Dashboard/Admin/hakAkses/delete/' . $p->idRole) ?>" class="badge badge-soft-danger p-2 alertAktivasi sweetalert" data-toggle="modal">
+                                    <a href="<?= base_url('Dashboard/Admin/hakAkses/delete/' . $p->idRole) ?>" class="badge badge-soft-danger p-2 sweetalert" data-toggle="modal">
                                         <i class="tio-delete"></i> Hapus
                                     </a>
 
