@@ -95,7 +95,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link " href="<?= base_url('hak_akses.php') ?>" title="Hak Akses">
+                            <a class="nav-link " href="<?= base_url('/dashboard/admin/hakAkses/') ?>" title="Hak Akses">
                                 <i class="tio-settings nav-icon"></i>
                                 <span class="text-truncate">Hak Akses</span>
                             </a>
