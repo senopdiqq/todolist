@@ -28,13 +28,7 @@
             })
             .then((willDelete) => {
                 if (willDelete) {
-                    swal({
-                        title: "Poof!",
-                        text: "Data berhasil Dihapus",
-                        icon: "success",
-                    }).then((redirect) => {
-                        document.location.href = href
-                    });
+                    document.location.href = href
                 }
             });
 

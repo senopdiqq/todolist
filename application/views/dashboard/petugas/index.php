@@ -114,11 +114,11 @@
                                 <td><?= $p->alamat; ?></td>
                                 <td><?= $p->no_hp; ?></td>
                                 <td>
-                                    <a href="<?= base_url('') ?>" class="badge badge-soft-success p-2">
+                                    <a href="<?= base_url('dashboard/admin/petugas/editPetugas/' . $p->idUser) ?>" class="badge badge-soft-success p-2">
                                         <i class=" tio-edit"></i>
                                         Edit</a>
-                                    <a class="badge badge-soft-danger p-2 alertAktivasi" href="<?= base_url('') ?>">
-                                        <i class="tio-delete"></i> Nonaktifkan Akun
+                                    <a class="badge badge-soft-danger p-2 sweetalert" href="<?= base_url('dashboard/admin/petugas/hapusPetugas/' . $p->idUser) ?>">
+                                        <i class="tio-delete"></i> Hapus
                                     </a>
 
                                 </td>
