@@ -31,7 +31,7 @@
                     <ul class="navbar-nav navbar-nav-lg nav-tabs">
                         <!-- Dashboards -->
                         <li class="navbar-vertical-aside-has-menu nav-item">
-                            <a class="js-navbar-vertical-aside-menu-link nav-link " href="<?= base_url('dashboard/home') ?>" title="Dashboards">
+                            <a class="js-navbar-vertical-aside-menu-link nav-link " href="<?= base_url('Dashboard/home') ?>" title="Dashboards">
                                 <i class="tio-home-vs-1-outlined nav-icon"></i>
                                 <span class="nav-compact-title text-truncate">Dashboard</span>
                             </a>
@@ -52,14 +52,14 @@
                             <ul class="js-navbar-vertical-aside-submenu nav nav-sub">
                                 <?php if ($this->session->userdata('idRole') == '1') : ?>
                                     <li class="nav-item">
-                                        <a class="nav-link " href="<?= base_url('dashboard/admin/petugas') ?>" title="Dokter">
+                                        <a class="nav-link " href="<?= base_url('Dashboard/Admin/Petugas') ?>" title="Data Petugas">
                                             <span class="tio-circle nav-indicator-icon"></span>
                                             <span class="text-truncate">Data Petugas</span>
                                         </a>
                                     </li>
 
                                     <li class="nav-item">
-                                        <a class="nav-link " href="<?= base_url('dashboard/desa/index') ?>" title="Dokter">
+                                        <a class="nav-link " href="<?= base_url('Dashboard/Desa/index') ?>" title="Daftar Desa">
                                             <span class="tio-circle nav-indicator-icon"></span>
                                             <span class="text-truncate">Daftar Desa</span>
                                         </a>
@@ -67,13 +67,13 @@
                                 <?php endif; ?>
                                 <?php if ($this->session->userdata('idRole') == '2') : ?>
                                     <li class="nav-item">
-                                        <a class="nav-link " href="<?= base_url('dashboard/petugas/kecamatan') ?>" title="Tindakan">
+                                        <a class="nav-link " href="<?= base_url('Dashboard/Petugas/Kecamatan') ?>" title="Daftar Kecamatan">
                                             <span class="tio-circle nav-indicator-icon"></span>
                                             <span class="text-truncate">Daftar Kecamatan</span>
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link " href="<?= base_url('list_tindakan.php') ?>" title="Tindakan">
+                                        <a class="nav-link " href="<?= base_url('Dashboard/Petugas/Pemohon') ?>" title="Daftar Pemohon">
                                             <span class="tio-circle nav-indicator-icon"></span>
                                             <span class="text-truncate">Daftar Pemohon</span>
                                         </a>
@@ -95,7 +95,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link " href="<?= base_url('/dashboard/admin/hakAkses/') ?>" title="Hak Akses">
+                            <a class="nav-link " href="<?= base_url('Dashboard/Admin/HakAkses/') ?>" title="Hak Akses">
                                 <i class="tio-settings nav-icon"></i>
                                 <span class="text-truncate">Hak Akses</span>
                             </a>

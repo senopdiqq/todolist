@@ -76,7 +76,7 @@
                                     <label for="telepon" class="col-sm-3 col-form-label input-label">No Hp</label>
 
                                     <div class="col-sm-9">
-                                        <input type="number" class="form-control" name="no_hp" placeholder="0812532323206" autocomplete="off" value="<?= set_value('no_hp'); ?>">
+                                        <input type="number" onkeydown="return event.keyCode !== 69" class="form-control" name="no_hp" placeholder="0812532323206" autocomplete="off" value="<?= set_value('no_hp'); ?>">
                                     </div>
                                 </div>
                                 <!-- End Form Group -->

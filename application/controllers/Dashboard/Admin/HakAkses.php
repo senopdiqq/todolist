@@ -105,7 +105,7 @@ class HakAkses extends CI_Controller
                 0
             );
         }
-        redirect(base_url() . 'Dashboard/Admin/hakAkses');
+        redirect(base_url() . 'Dashboard/Admin/HakAkses');
     }
 
     public function delete($id)
@@ -135,6 +135,6 @@ class HakAkses extends CI_Controller
             );
         }
 
-        redirect(base_url() . 'Dashboard/Admin/hakAkses');
+        redirect(base_url() . 'Dashboard/Admin/HakAkses');
     }
 }

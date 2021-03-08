@@ -107,7 +107,7 @@ class Petugas extends CI_Controller
                 ],
                 0
             );
-            redirect(base_url() . 'dashboard/admin/petugas');
+            redirect(base_url() . 'Dashboard/Admin/Petugas');
         }
     }
 
@@ -193,7 +193,7 @@ class Petugas extends CI_Controller
                 ],
                 0
             );
-            redirect(base_url() . 'dashboard/admin/petugas');
+            redirect(base_url() . 'Dashboard/Admin/Petugas');
         }
     }
 
@@ -210,6 +210,6 @@ class Petugas extends CI_Controller
             ],
             0
         );
-        redirect(base_url() . 'dashboard/admin/petugas');
+        redirect(base_url() . 'Dashboard/Admin/Petugas');
     }
 }
