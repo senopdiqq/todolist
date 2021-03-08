@@ -18,7 +18,7 @@ class HakAkses extends CI_Controller
 
         $this->load->view('templates/navbar');
         $this->load->view('templates/sidebar');
-        $this->load->view('dashboard/hakAkses/index',$data);
+        $this->load->view('dashboard/hakAkses/index', $data);
         $this->load->view('templates/footer');
     }
 
@@ -111,23 +111,23 @@ class HakAkses extends CI_Controller
     public function delete($id)
     {
         $hapus = $this->model->deleteRole($id);
-        if($hapus){
+        if ($hapus) {
             $this->session->set_tempdata(
                 'flash',
                 [
                     'title' => 'Berhasil',
                     'text'  => 'Berhasil Menghapus Hak Akses !',
                     'type'  => 'success',
-    
+
                 ],
                 0
             );
-        }else{
+        } else {
             $this->session->set_tempdata(
                 'flash',
                 [
-                    'title' => 'Whoopz!',
-                    'text'  => "Gagal Menghapus Hak Akses !",
+                    'title' => 'Gagal Hapus!',
+                    'text'  => "Hak akses sedang digunakan !",
                     'type'  => 'error',
 
                 ],

@@ -114,7 +114,7 @@
                                     <a href="<?= base_url('') ?>" class="badge badge-soft-success p-2 btn-edit" data-nama="<?= $p->nama_role ?>" data-id="<?= $p->idRole ?>" data-toggle="modal" data-target="#ModalEdit">
                                         <i class=" tio-edit"></i>
                                         Edit</a>
-                                    <a href="<?= base_url('Dashboard/Admin/hakAkses/delete/'.$p->idRole) ?>" class="badge badge-soft-danger p-2 alertAktivasi sweetalert" data-toggle="modal">
+                                    <a href="<?= base_url('Dashboard/Admin/hakAkses/delete/' . $p->idRole) ?>" class="badge badge-soft-danger p-2 sweetalert" data-toggle="modal">
                                         <i class="tio-delete"></i> Hapus
                                     </a>
 
@@ -140,15 +140,15 @@
                         </div>
                         <div class="modal-body">
                             <form action="<?= base_url("Dashboard/Admin/hakAkses/update") ?>" method="POST" enctype="multipart/form-data">
-                                    <input type="hidden" name="id_role" id="editIdRole">
-                                    <div class="form-group">
-                                        <label for="nama_role" class="control-label">Nama Hak Akses</label>
-                                        <input type="text" id="editRole" class="form-control" autocomplete="off" name="nama_role">
-                                    </div>
+                                <input type="hidden" name="id_role" id="editIdRole">
+                                <div class="form-group">
+                                    <label for="nama_role" class="control-label">Nama Hak Akses</label>
+                                    <input type="text" id="editRole" class="form-control" autocomplete="off" name="nama_role">
+                                </div>
                         </div>
                         <div class="modal-footer">
                             <button type="submit" name="tambah" class="btn btn-success">
-                                <i class="tio-delete"></i>
+                                <i class="tio-edit"></i>
                                 Edit Data</button>
                             <button type="button" class="btn btn-white" data-dismiss="modal">Tutup</button>
                         </div>
@@ -200,14 +200,14 @@
         <!-- End Card -->
     </div>
     <!-- End Content -->
-    
+
     <script>
         $('.btn-edit').click(function() {
             $('#editIdRole').val($(this).data('id'))
             $('#editRole').val($(this).data('nama'))
         })
 
-        $('.btn-hapus').click(function(){
+        $('.btn-hapus').click(function() {
             $('#idRole').val($(this).data('id'))
         })
     </script>

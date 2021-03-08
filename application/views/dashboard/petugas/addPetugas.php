@@ -138,7 +138,7 @@
                                 <!-- End Form Group -->
                                 <!-- Form Group -->
                                 <div class="row form-group">
-                                    <label for="editUserModalCurrentPasswordLabel" class="col-sm-3 col-form-label input-label">Password</label>
+                                    <label for="editUserModalCurrentPasswordLabel" class="col-sm-3 col-form-label input-label">Password <i class="tio-help-outlined text-body ml-1" data-toggle="tooltip" data-placement="top" title="" data-original-title="Password minimal 6 karakter"></i></label>
 
                                     <div class="col-sm-9">
                                         <div class="input-group input-group-merge">
