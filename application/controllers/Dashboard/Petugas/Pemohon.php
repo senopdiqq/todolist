@@ -29,10 +29,11 @@ class Pemohon extends CI_Controller
             'alpha'    => 'Nama hanya boleh karakter !'
 
         ]);
-        $this->form_validation->set_rules('nik', 'NIK', 'required|trim|numeric', [
+        $this->form_validation->set_rules('nik', 'NIK', 'required|trim|numeric|is_unique[tb_pemohon.nik]', [
 
-            'required' => 'Alamat tidak boleh kosong !',
-            'numeric'  => 'NIK hanya boleh angka !'
+            'required'  => 'Alamat tidak boleh kosong !',
+            'numeric'   => 'NIK hanya boleh angka !',
+            'is_unique' => 'NIK telah terdaftar !'
 
         ]);
 
@@ -48,10 +49,11 @@ class Pemohon extends CI_Controller
 
         ]);
 
-        $this->form_validation->set_rules('umur', 'Umur', 'required|trim|numeric', [
+        $this->form_validation->set_rules('umur', 'Umur', 'required|trim|numeric|max_length[3]', [
 
-            'required'  => 'Umur tidak boleh kosong !',
-            'numeric'   => 'Umur harus berupa angka !'
+            'required'      => 'Umur tidak boleh kosong !',
+            'numeric'       => 'Umur harus berupa angka !',
+            'max_length'    => 'Umur maksimal 3 digit !'
 
         ]);
 

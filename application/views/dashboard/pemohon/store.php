@@ -9,7 +9,7 @@
 
             </div>
         </div>
-        <form method="POST" enctype="multipart/form-data">
+        <form method="POST" enctype="multipart/form-data" id="myForm">
             <div class="col-lg-12">
                 <!-- Card -->
 
@@ -64,7 +64,7 @@
                             <label for="telepon" class="col-sm-3 col-form-label input-label">Umur</label>
 
                             <div class="col-sm-9">
-                                <input type="number" onkeydown="return event.keyCode !== 69" class="form-control" name="umur" placeholder="21" autocomplete="off" value="<?= set_value('umur'); ?>">
+                                <input type="number" min="1" onkeydown="return event.keyCode !== 69" class="form-control" name="umur" placeholder="21" autocomplete="off" value="<?= set_value('umur'); ?>">
                             </div>
                         </div>
                         <!-- End Form Group -->
@@ -99,8 +99,9 @@
                     </div>
                     <!-- End Body -->
                     <!-- Footer -->
+
                     <div class="card-footer d-flex justify-content-end align-items-center">
-                        <button type="submit" name="submit" class="btn btn-primary">
+                        <button type="button" class="btn btn-primary tambahPemohon">
                             <i class="tio-add-circle"></i> Tambah Pemohon
                         </button>
 
@@ -114,7 +115,30 @@
                 <!-- Sticky Block End Point -->
                 <div id="stickyBlockEndPoint"></div>
             </div>
-            <form>
+        </form>
     </div>
     </div>
 </main>
+<script>
+    $('.tambahPemohon').click(function(e) {
+
+        swal({
+                title: "Peringatan!",
+                text: "Dengan klik tambah, anda tidak dapat mengubahnya lagi!",
+                icon: "warning",
+                buttons: {
+                    confirm: 'Ya, Tambah Pemohon',
+                    cancel: 'Batal'
+                },
+                dangerMode: true,
+            })
+            .then((willSubmit) => {
+
+                if (willSubmit) {
+                    $('#myForm').submit();
+                }
+            });
+
+
+    });
+</script>

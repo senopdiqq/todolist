@@ -92,7 +92,7 @@
                             <th>Pekerjaan</th>
                             <th>Umur</th>
                             <th>Jenis Kelamin</th>
-                            <th>Aksi</th>
+                            <th>Status</th>
                             </th>
                         </tr>
                     </thead>
@@ -114,13 +114,19 @@
                                 <td><?= $p->umur . " tahun"; ?></td>
                                 <td><?= $p->jenis_kelamin; ?></td>
                                 <td>
-                                    <a href="" class="badge badge-soft-success p-2 btn-edit">
-                                        <i class=" tio-edit"></i>
-                                        Edit</a>
-                                    <a href="<?= base_url('Dashboard/Petugas/Kecamatan/delete/' . $p->idPemohon) ?>" class="badge badge-soft-danger p-2 sweetalert" data-toggle="modal">
-                                        <i class="tio-delete"></i> Hapus
-                                    </a>
-
+                                    <?php if ($p->status_pemohon == "belum_terverifikasi") : ?>
+                                        <span class="badge badge-soft-danger p-2">
+                                            Belum Terverifikasi
+                                        </span>
+                                    <?php elseif ($p->status_pemohon == "revisi") : ?>
+                                        <a href="" class="badge badge-soft-warning p-2">
+                                            <i class=" tio-edit"></i> Revisi Pemohon
+                                        </a>
+                                    <?php elseif ($p->status_pemohon == "terverifikasi") : ?>
+                                        <span class="badge badge-soft-success p-2">
+                                            Terverifikasi
+                                        </span>
+                                    <?php endif; ?>
                                 </td>
 
                             </tr>
