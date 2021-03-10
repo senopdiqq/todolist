@@ -14,6 +14,7 @@ class ProfilUser extends CI_Controller
     public function index()
     {
         $idUser = $this->session->userdata('idUser');
+        $email = $this->input->post('email', true);
 
         $data['profil'] = $this->model->getProfil($idUser);
 

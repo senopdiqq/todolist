@@ -25,6 +25,7 @@ class Pemohon extends CI_Controller
     public function revisi($id)
     {
         $data['data'] = $this->model->getData($id);
+        $nik = $this->input->post('nik', true);
 
         $this->form_validation->set_rules('nama', 'Nama', 'required|trim|alpha', [
 
@@ -192,6 +193,7 @@ class Pemohon extends CI_Controller
     public function update($id)
     {
         $data['data'] = $this->model->getData($id);
+        $nik = $this->input->post('nik', true);
 
         $this->form_validation->set_rules('nama', 'Nama', 'required|trim|alpha', [
 
