@@ -100,7 +100,7 @@
                                     </a>
 
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="<?= base_url('update_password.php') ?>">
+                                    <a class="dropdown-item" href="<?= base_url('Dashboard/home/updatePassword') ?>">
                                         <span class="text-truncate pr-2" title="Settings">Update Password</span>
                                     </a>
                                     <a class="dropdown-item sweetalertNya" href="<?= base_url('dashboard/home/logout') ?>">
