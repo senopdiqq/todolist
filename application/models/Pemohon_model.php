@@ -8,6 +8,11 @@ class Pemohon_model extends CI_Model
         return $this->db->get('tb_pemohon')->result();
     }
 
+    public function getData($id)
+    {
+        return $this->db->get_where('tb_pemohon', ['idPemohon' => $id])->row();
+    }
+
     public function store()
     {
         $data = array(
@@ -22,5 +27,21 @@ class Pemohon_model extends CI_Model
         );
 
         $this->db->insert('tb_pemohon', $data);
+    }
+
+    public function update()
+    {
+        $data = array(
+            'nama'              => $this->input->post('nama', true),
+            'nik'               => $this->input->post('nik', true),
+            'alamat'            => $this->input->post('alamat', true),
+            'pekerjaan'         => $this->input->post('pekerjaan', true),
+            'umur'              => $this->input->post('umur', true),
+            'jenis_kelamin'     => $this->input->post('jenis_kelamin', true),
+            'status_pemohon'    => 'belum_terverifikasi',
+            'keterangan'        => NULL
+        );
+
+        $this->db->where('idPemohon', $this->input->post('idPemohon'))->update('tb_pemohon', $data);
     }
 }

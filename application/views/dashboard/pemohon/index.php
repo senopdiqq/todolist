@@ -93,6 +93,7 @@
                             <th>Umur</th>
                             <th>Jenis Kelamin</th>
                             <th>Status</th>
+                            <th>Aksi</th>
                             </th>
                         </tr>
                     </thead>
@@ -119,16 +120,28 @@
                                             Belum Terverifikasi
                                         </span>
                                     <?php elseif ($p->status_pemohon == "revisi") : ?>
-                                        <a href="" class="badge badge-soft-warning p-2">
-                                            <i class=" tio-edit"></i> Revisi Pemohon
-                                        </a>
+                                        <span class="badge badge-soft-warning p-2">
+                                            Revisi Pemohon
+                                        </span>
                                     <?php elseif ($p->status_pemohon == "terverifikasi") : ?>
                                         <span class="badge badge-soft-success p-2">
                                             Terverifikasi
                                         </span>
                                     <?php endif; ?>
                                 </td>
-
+                                <td>
+                                    <?php if ($p->status_pemohon == "belum_terverifikasi") : ?>
+                                        <p class="text-secondary">menunggu verifikasi admin</p>
+                                    <?php elseif ($p->status_pemohon == "revisi") : ?>
+                                        <a href="<?= base_url("Dashboard/Petugas/Pemohon/revisi/" . $p->idPemohon) ?>" class="badge badge-soft-danger p-2">
+                                            <i class=" tio-edit"></i> Revisi Data
+                                        </a>
+                                    <?php elseif ($p->status_pemohon == "terverifikasi") : ?>
+                                        <a href="<?= base_url("Dashboard/Petugas/Pemohon/update/" . $p->idPemohon) ?>" class="badge badge-soft-success p-2">
+                                            <i class=" tio-edit"></i> Edit Data
+                                        </a>
+                                    <?php endif; ?>
+                                </td>
                             </tr>
                         <?php $no++;
                         endforeach; ?>
