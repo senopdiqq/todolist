@@ -8,6 +8,7 @@ class Desa extends CI_Controller
     {
         parent::__construct();
         is_not_logged_in();
+        is_petugas();
         $this->load->model('desa_model', 'model');
     }
 
@@ -136,18 +137,18 @@ class Desa extends CI_Controller
     public function delete($id)
     {
         $hapus = $this->model->deleteDesa($id);
-        if($hapus){
+        if ($hapus) {
             $this->session->set_tempdata(
                 'flash',
                 [
                     'title' => 'Berhasil',
                     'text'  => 'Berhasil Menghapus Desa !',
                     'type'  => 'success',
-    
+
                 ],
                 0
             );
-        }else{
+        } else {
             $this->session->set_tempdata(
                 'flash',
                 [

@@ -9,6 +9,7 @@ class HakAkses extends CI_Controller
     {
         parent::__construct();
         is_not_logged_in();
+        is_admin();
         $this->load->model('hak_akses_model', 'model');
     }
 

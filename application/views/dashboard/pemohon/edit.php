@@ -125,7 +125,7 @@
 
         swal({
                 title: "Peringatan!",
-                text: "Dengan klik edit, anda tidak dapat mengubahnya lagi!",
+                text: "Dengan klik edit, data harus diverifikasi admin kembali !",
                 icon: "warning",
                 buttons: {
                     confirm: 'Ya, Edit Pemohon',

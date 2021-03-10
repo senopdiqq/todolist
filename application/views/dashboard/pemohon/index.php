@@ -131,7 +131,7 @@
                                 </td>
                                 <td>
                                     <?php if ($p->status_pemohon == "belum_terverifikasi") : ?>
-                                        <p class="text-secondary">menunggu verifikasi admin</p>
+                                        <span class="badge badge-soft-secondary p-2">Menunggu Verifikasi Admin</span>
                                     <?php elseif ($p->status_pemohon == "revisi") : ?>
                                         <a href="<?= base_url("Dashboard/Petugas/Pemohon/revisi/" . $p->idPemohon) ?>" class="badge badge-soft-danger p-2">
                                             <i class=" tio-edit"></i> Revisi Data

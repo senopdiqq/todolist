@@ -32,7 +32,7 @@
                             <label for="telepon" class="col-sm-3 col-form-label input-label">Keterangan</label>
 
                             <div class="col-sm-9">
-                                <textarea name="" id="" class="form-control" cols="30" rows="10"><?= $data->keterangan ?>
+                                <textarea readonly name="" id="" class="form-control" cols="30" rows="10"><?= $data->keterangan ?>
                                 </textarea>
                             </div>
                         </div>

@@ -8,6 +8,8 @@ class VerifPemohon extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+        is_not_logged_in();
+        is_admin();
         $this->load->model('VerifPemohon_model', 'model');
     }
 

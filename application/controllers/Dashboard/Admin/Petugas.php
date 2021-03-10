@@ -9,6 +9,7 @@ class Petugas extends CI_Controller
     {
         parent::__construct();
         is_not_logged_in();
+        is_admin();
         $this->load->model('Petugas_model', 'model');
     }
 

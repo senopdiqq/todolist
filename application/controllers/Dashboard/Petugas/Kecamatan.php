@@ -8,6 +8,7 @@ class Kecamatan extends CI_Controller
     {
         parent::__construct();
         is_not_logged_in();
+        is_petugas();
         $this->load->model('Kecamatan_model', 'model');
     }
 
