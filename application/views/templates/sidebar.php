@@ -57,6 +57,12 @@
                                             <span class="text-truncate">Data Petugas</span>
                                         </a>
                                     </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link " href="<?= base_url('Dashboard/Admin/VerifPemohon') ?>" title="Data Petugas">
+                                            <span class="tio-circle nav-indicator-icon"></span>
+                                            <span class="text-truncate">Data Pemohon</span>
+                                        </a>
+                                    </li>
                                 <?php endif; ?>
                                 <?php if ($this->session->userdata('idRole') == '2') : ?>
                                     <li class="nav-item">
