@@ -84,29 +84,35 @@
                                             <span class="text-truncate">Daftar Desa</span>
                                         </a>
                                     </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link " href="<?= base_url('Dashboard/Petugas/Tanah/index') ?>" title="Daftar Desa">
+                                            <span class="tio-circle nav-indicator-icon"></span>
+                                            <span class="text-truncate">Daftar Tanah</span>
+                                        </a>
+                                    </li>
                                 <?php endif; ?>
                             </ul>
                         </li>
 
+                        <?php if ($this->session->userdata('idRole') == '1') : ?>
+                            <li class="nav-item">
+                                <small class="nav-subtitle" title="Pengaturan">Pengaturan</small>
+                                <small class="tio-more-horizontal nav-subtitle-replacer"></small>
+                            </li>
 
-                        <li class="nav-item">
-                            <small class="nav-subtitle" title="Pengaturan">Pengaturan</small>
-                            <small class="tio-more-horizontal nav-subtitle-replacer"></small>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="js-nav-tooltip-link nav-link" href="<?= base_url('profil_klinik.php') ?>" title="profil Klinik" data-placement="left" data-original-title="Profil Klinik">
-                                <i class="tio-settings nav-icon"></i>
-                                <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">Profil</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link " href="<?= base_url('Dashboard/Admin/HakAkses/') ?>" title="Hak Akses">
-                                <i class="tio-settings nav-icon"></i>
-                                <span class="text-truncate">Hak Akses</span>
-                            </a>
-                        </li>
-
+                            <li class="nav-item">
+                                <a class="js-nav-tooltip-link nav-link" href="<?= base_url('profil_klinik.php') ?>" title="profil Klinik" data-placement="left" data-original-title="Profil Klinik">
+                                    <i class="tio-settings nav-icon"></i>
+                                    <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">Profil</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link " href="<?= base_url('Dashboard/Admin/HakAkses/') ?>" title="Hak Akses">
+                                    <i class="tio-settings nav-icon"></i>
+                                    <span class="text-truncate">Hak Akses</span>
+                                </a>
+                            </li>
+                        <?php endif; ?>
 
 
                     </ul>
