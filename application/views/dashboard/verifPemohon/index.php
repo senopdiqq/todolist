@@ -5,45 +5,9 @@
         <div class="page-header">
             <div class="row align-items-center">
                 <div class="col-sm mb-2 mb-sm-0">
-                    <h1 class="page-header-title">Halaman Kecamatan</h1>
-                </div>
-                <div class="col-sm-auto">
-                    <button class="btn btn-primary" data-toggle="modal" data-target="#ModalTambah">
-                        <i class="tio-add-circle"></i>
-                        Tambah Hak Akses
-                    </button>
+                    <h1 class="page-header-title">Halaman Verifikasi Pemohon</h1>
                 </div>
 
-                <!-- Modal Tambah -->
-                <div class="modal fade" id="ModalTambah" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Tambah Kecamatan</h5>
-                                <button type="button" class="btn btn-xs btn-icon btn-ghost-secondary" data-dismiss="modal" aria-label="Close">
-                                    <i class="tio-clear tio-lg"></i>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <form action="<?= base_url("Dashboard/Petugas/kecamatan/store") ?>" method="POST" enctype="multipart/form-data">
-                                    <div class="form-group">
-                                        <label for="nama_kecamatan" class="control-label">Nama Kecamatan</label>
-                                        <input type="text" class="form-control" autocomplete="off" name="nama_kecamatan">
-                                    </div>
-
-
-                            </div>
-                            <div class="modal-footer">
-                                <button type="submit" name="tambah" class="btn btn-primary">
-                                    <i class="tio-add-circle"></i>
-                                    Tambah Data</button>
-                                <button type="button" class="btn btn-white" data-dismiss="modal">Tutup</button>
-                            </div>
-                        </div>
-                    </div>
-                    </form>
-                </div>
-                <!-- End Modal -->
 
             </div>
         </div>
@@ -53,11 +17,11 @@
             <!-- Card -->
             <div class="card h-100">
                 <div class="card-body">
-                    <h6 class="card-subtitle mb-2">Total Kecamatan</h6>
+                    <h6 class="card-subtitle mb-2">Total Pemohon</h6>
 
                     <div class="row align-items-center gx-2">
                         <div class="col">
-                            <span class="js-counter display-4 text-dark"><?= count($kecamatan); ?></span>
+                            <span class="js-counter display-4 text-dark"><?= count($pemohon); ?></span>
                         </div>
 
                         <div class="col-auto">
@@ -85,7 +49,7 @@
                                         <i class="tio-search"></i>
                                     </div>
                                 </div>
-                                <input id="datatableSearch" type="search" autocomplete="off" class="form-control" placeholder="Cari Kecamatan">
+                                <input id="datatableSearch" type="search" autocomplete="off" class="form-control" placeholder="Cari Pemohon">
                             </div>
                             <!-- End Search -->
                         </form>
@@ -116,7 +80,12 @@
                     <thead class="thead-light">
                         <tr>
                             <th>No</th>
-                            <th>Nama Kecamatan</th>
+                            <th>Nama Pemohon</th>
+                            <th>NIK</th>
+                            <th>Alamat</th>
+                            <th>Pekerjaan</th>
+                            <th>Umur</th>
+                            <th>Jenis Kelamin</th>
                             <th>Aksi</th>
                             </th>
                         </tr>
@@ -125,22 +94,26 @@
                     <tbody>
                         <?php
                         $no = 1;
-                        foreach ($kecamatan as $p) :
+                        foreach ($pemohon as $p) :
 
                         ?>
 
                             <tr role="row" class="even">
                                 <td>
                                     <?= $no; ?> </td>
-                                <td><?= $p->nama_kecamatan; ?></td>
+                                <td><?= $p->nama; ?></td>
+                                <td><?= $p->nik; ?></td>
+                                <td><?= $p->alamat; ?></td>
+                                <td><?= $p->pekerjaan; ?></td>
+                                <td><?= $p->umur . " tahun"; ?></td>
+                                <td><?= $p->jenis_kelamin; ?></td>
                                 <td>
-                                    <a href="" class="badge badge-soft-success p-2 btn-edit" data-nama="<?= $p->nama_kecamatan ?>" data-id="<?= $p->idKecamatan ?>" data-toggle="modal" data-target="#ModalEdit">
-                                        <i class=" tio-edit"></i>
-                                        Edit</a>
-                                    <a href="<?= base_url('Dashboard/Petugas/Kecamatan/delete/' . $p->idKecamatan) ?>" class="badge badge-soft-danger p-2 sweetalert" data-toggle="modal">
-                                        <i class="tio-delete"></i> Hapus
+                                    <a href="<?= base_url('dashboard/admin/verifpemohon/verified/' . $p->idPemohon) ?>" class="badge badge-soft-success p-2 verifikasi">
+                                        <i class=" tio-done"></i> Verifikasi Pemohon
                                     </a>
-
+                                    <a href="" class="badge badge-soft-danger p-2 btn-edit" data-nama="<?= $p->nama ?>" data-id="<?= $p->idPemohon ?>" data-toggle="modal" data-target="#ModalEdit">
+                                        <i class=" tio-edit"></i>
+                                        Revisi Pemohon</a>
                                 </td>
 
                             </tr>
@@ -150,36 +123,6 @@
                 </table>
             </div>
             <!-- End Table -->
-
-            <!-- Modal Edit -->
-            <div class="modal fade" id="ModalEdit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Edit Kecamatan</h5>
-                            <button type="button" class="btn btn-xs btn-icon btn-ghost-secondary" data-dismiss="modal" aria-label="Close">
-                                <i class="tio-clear tio-lg"></i>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <form action="<?= base_url("Dashboard/Petugas/Kecamatan/update") ?>" method="POST" enctype="multipart/form-data">
-                                <input type="hidden" name="idKecamatan" id="editIdKecamatan">
-                                <div class="form-group">
-                                    <label for="nama_kecamatan" class="control-label">Nama Kecamatan</label>
-                                    <input type="text" id="editKecamatan" class="form-control" autocomplete="off" name="nama_kecamatan">
-                                </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="submit" name="tambah" class="btn btn-success">
-                                <i class="tio-edit"></i>
-                                Edit Data</button>
-                            <button type="button" class="btn btn-white" data-dismiss="modal">Tutup</button>
-                        </div>
-                    </div>
-                </div>
-                </form>
-            </div>
-            <!-- End Modal -->
 
             <!-- Footer -->
             <div class="card-footer">
@@ -223,12 +166,69 @@
         <!-- End Card -->
     </div>
     <!-- End Content -->
+    <!-- Modal Edit -->
+    <div class="modal fade" id="ModalEdit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Revisi Data</h5>
+                    <button type="button" class="btn btn-xs btn-icon btn-ghost-secondary" data-dismiss="modal" aria-label="Close">
+                        <i class="tio-clear tio-lg"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="<?= base_url("Dashboard/Admin/VerifPemohon/revisi") ?>" method="POST" enctype="multipart/form-data">
+                        <input type="hidden" name="idPemohon" id="editIdPemohon">
+                        <div class="form-group">
+                            <label for="nama" class="control-label">Nama Pemohon</label>
+                            <input type="text" id="nama" class="form-control" readonly autocomplete="off" name="nama"></input>
+                        </div>
+                        <div class="form-group">
+                            <label for="nama_kecamatan" class="control-label">Keterangan Revisi</label>
+                            <textarea class="form-control" name="keterangan"></textarea>
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" name="tambah" class="btn btn-success">
+                        <i class="tio-edit"></i>
+                        Ajukan Revisi</button>
+                    <button type="button" class="btn btn-white" data-dismiss="modal">Tutup</button>
+                </div>
+            </div>
+        </div>
+        </form>
+    </div>
+    <!-- End Modal -->
 
-    <script>
-        $('.btn-edit').click(function() {
-            $('#editIdKecamatan').val($(this).data('id'))
-            $('#editKecamatan').val($(this).data('nama'))
-        })
-    </script>
 
 </main>
+
+<script>
+    $('.verifikasi').click(function(e) {
+
+        e.preventDefault();
+        const href = $(this).attr('href');
+
+        swal({
+                title: "Apa Anda Yakin?",
+                text: "Dengan klik Ya, pemohon akan diverifikasi",
+                icon: "warning",
+                buttons: {
+                    confirm: 'Ya',
+                    cancel: 'Batal'
+                },
+                dangerMode: true,
+            })
+            .then((willDelete) => {
+                if (willDelete) {
+                    document.location.href = href
+                }
+            });
+
+
+    });
+    $('.btn-edit').click(function() {
+        $('#editIdPemohon').val($(this).data('id'))
+        $('#nama').val($(this).data('nama'))
+    })
+</script>
