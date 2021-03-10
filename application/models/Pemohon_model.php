@@ -13,6 +13,13 @@ class Pemohon_model extends CI_Model
         return $this->db->get_where('tb_pemohon', ['idPemohon' => $id])->row();
     }
 
+    public function searchUniqueNIK($nik, $id)
+    {
+        $this->db->where_not_in('idPemohon', $id);
+        $this->db->where('nik', $nik);
+        return $this->db->get('tb_pemohon')->row();
+    }
+
     public function store()
     {
         $data = array(

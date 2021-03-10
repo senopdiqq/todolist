@@ -87,7 +87,7 @@
                                 </a>
 
                                 <div id="accountNavbarDropdown" class="hs-unfold-content dropdown-unfold dropdown-menu dropdown-menu-right navbar-dropdown-menu navbar-dropdown-account" style="width: 16rem;">
-                                    <a class="dropdown-item" href="<?= base_url('account_settings.php') ?>">
+                                    <a class="dropdown-item" href="<?= base_url('Dashboard/ProfilUser') ?>">
                                         <div class="media align-items-center">
                                             <div class="avatar avatar-sm avatar-circle mr-2">
                                                 <img class="avatar-img" src="<?= base_url('assets/img/foto_user/default.jpg') ?>">

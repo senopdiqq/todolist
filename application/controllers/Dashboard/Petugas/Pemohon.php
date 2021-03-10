@@ -24,18 +24,28 @@ class Pemohon extends CI_Controller
 
     public function revisi($id)
     {
+        $data['data'] = $this->model->getData($id);
+
         $this->form_validation->set_rules('nama', 'Nama', 'required|trim|alpha', [
 
             'required' => 'Nama tidak boleh kosong !',
             'alpha'    => 'Nama hanya boleh karakter !'
 
         ]);
-        $this->form_validation->set_rules('nik', 'NIK', 'required|trim|numeric', [
 
-            'required'  => 'NIK tidak boleh kosong !',
-            'numeric'   => 'NIK hanya boleh angka !'
+        if (!empty($nik) && $nik  != $data['data']->nik) {
 
-        ]);
+            $search = $this->model->searchUniqueNIK($nik, $id);
+
+            if ($search) {
+                $this->form_validation->set_rules('nik', 'NIK', 'required|trim|numeric|is_unique[tb_pemohon.nik]', [
+
+                    'required'  => 'NIK tidak boleh kosong !',
+                    'numeric'   => 'NIK hanya boleh angka !',
+                    'is_unique' => 'NIK telah terdaftar !'
+                ]);
+            }
+        }
 
         $this->form_validation->set_rules('alamat', 'Alamat', 'required|trim', [
 
@@ -80,8 +90,6 @@ class Pemohon extends CI_Controller
                     break;
                 }
             }
-
-            $data['data'] = $this->model->getData($id);
 
             $this->load->view('templates/navbar');
             $this->load->view('templates/sidebar');
@@ -183,18 +191,28 @@ class Pemohon extends CI_Controller
 
     public function update($id)
     {
+        $data['data'] = $this->model->getData($id);
+
         $this->form_validation->set_rules('nama', 'Nama', 'required|trim|alpha', [
 
             'required' => 'Nama tidak boleh kosong !',
             'alpha'    => 'Nama hanya boleh karakter !'
 
         ]);
-        $this->form_validation->set_rules('nik', 'NIK', 'required|trim|numeric', [
 
-            'required'  => 'NIK tidak boleh kosong !',
-            'numeric'   => 'NIK hanya boleh angka !'
+        if (!empty($nik) && $nik  != $data['data']->nik) {
 
-        ]);
+            $search = $this->model->searchUniqueNIK($nik, $id);
+
+            if ($search) {
+                $this->form_validation->set_rules('nik', 'NIK', 'required|trim|numeric|is_unique[tb_pemohon.nik]', [
+
+                    'required'  => 'NIK tidak boleh kosong !',
+                    'numeric'   => 'NIK hanya boleh angka !',
+                    'is_unique' => 'NIK telah terdaftar !'
+                ]);
+            }
+        }
 
         $this->form_validation->set_rules('alamat', 'Alamat', 'required|trim', [
 
@@ -239,8 +257,6 @@ class Pemohon extends CI_Controller
                     break;
                 }
             }
-
-            $data['data'] = $this->model->getData($id);
 
             $this->load->view('templates/navbar');
             $this->load->view('templates/sidebar');
