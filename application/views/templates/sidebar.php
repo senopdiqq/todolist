@@ -101,7 +101,7 @@
                             </li>
 
                             <li class="nav-item">
-                                <a class="js-nav-tooltip-link nav-link" href="<?= base_url('profil_klinik.php') ?>" title="profil Klinik" data-placement="left" data-original-title="Profil Klinik">
+                                <a class="js-nav-tooltip-link nav-link" href="<?= base_url('Dashboard/Profil') ?>" title="profil" data-placement="left" data-original-title="Profil">
                                     <i class="tio-settings nav-icon"></i>
                                     <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">Profil</span>
                                 </a>
