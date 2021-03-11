@@ -171,7 +171,6 @@
         let check = text.split("");
         if (check[0] == 0) {
             check[0] = Math.floor(Math.random() * 9) + 1;
-            check[0].toString();
         }
         $("#nib").val(check.join(""));
     }
