@@ -95,7 +95,9 @@
                             </th>
                             <th>Letak Tanah</th>
                             <th>RT / RW</th>
-                            <th>Aksi</th>
+                            <th>
+                                <center>Aksi</center>
+                            </th>
                             </th>
                         </tr>
                     </thead>

@@ -21,8 +21,30 @@ class Tanah_model extends CI_Model
         return $this->db->where("status_pemohon", "terverifikasi")->get('tb_pemohon')->result();
     }
 
-    public function getAllDesa()
+    public function getAllKecamatan()
     {
-        return $this->db->get('tb_desa')->result();
+        return $this->db->get('tb_kecamatan')->result();
+    }
+
+    public function store()
+    {
+
+        $data = array(
+            'nib'           => $this->input->post('nib', true),
+            'idPemohon'     => $this->input->post('idPemohon', true),
+            'idDesa'        => $this->input->post('idDesa', true),
+            'luas_tanah'    => $this->input->post('luas_tanah', true),
+            'letak_tanah'   => $this->input->post('letak_tanah', true),
+            'rt'            => $this->input->post('rt', true),
+            'rw'            => $this->input->post('rw', true)
+        );
+
+        $this->db->insert('tb_tanah', $data);
+    }
+
+    public function getDesaByAjax()
+    {
+        $idKecamatan = $this->input->post('idKecamatan', true);
+        return $this->db->get_where('tb_desa', ['idKecamatan' => $idKecamatan])->result();
     }
 }

@@ -56,14 +56,25 @@
                         <!-- End Form Group -->
                         <!-- Form Group -->
                         <div class="row form-group">
+                            <label for="alamat" class="col-sm-3 col-form-label input-label">Kecamatan</label>
+
+                            <div class="col-sm-9">
+                                <select id="kecamatan" onchange="ajax()" name="idKecamatan" class="form-control" style="width: 100%">
+                                    <option value="">-- Pilih Kecamatan --</option>
+                                    <?php foreach ($kecamatan as $k) :  ?>
+                                        <option value="<?= $k->idKecamatan ?>" <?= $data = (isset($_POST['idKecamatan']) && $_POST['idKecamatan'] == $k->idKecamatan ? 'selected' : '') ?>><?= $k->nama_kecamatan ?></option>
+                                    <?php endforeach ?>
+                                </select>
+                            </div>
+                        </div>
+                        <!-- End Form Group -->
+                        <!-- Form Group -->
+                        <div class="row form-group">
                             <label for="alamat" class="col-sm-3 col-form-label input-label">Desa</label>
 
                             <div class="col-sm-9">
                                 <select id="desa" name="idDesa" class="form-control" style="width: 100%">
-                                    <option value="">-- Pilih Desa --</option>
-                                    <?php foreach ($desa as $k) :  ?>
-                                        <option value="<?= $k->idDesa ?>" <?= $data = (isset($_POST['idDesa']) && $_POST['idDesa'] == $k->idDesa ? 'selected' : '') ?>><?= $k->nama ?></option>
-                                    <?php endforeach ?>
+                                    <option value=""></option>
                                 </select>
                             </div>
                         </div>
@@ -82,7 +93,7 @@
                             <label for="telepon" class="col-sm-3 col-form-label input-label">Letak Tanah</label>
 
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" name="letak_tanah" placeholder="Swasta" autocomplete="off" value="<?= set_value('letak_tanah'); ?>">
+                                <input type="text" class="form-control" name="letak_tanah" placeholder="Malang" autocomplete="off" value="<?= set_value('letak_tanah'); ?>">
                             </div>
                         </div>
                         <!-- End Form Group -->
@@ -105,7 +116,7 @@
 
                     <div class="card-footer d-flex justify-content-end align-items-center">
                         <button type="submit" class="btn btn-primary">
-                            <i class="tio-add-circle"></i> Tambah Desa
+                            <i class="tio-add-circle"></i> Tambah Tanah
                         </button>
 
                     </div>
@@ -147,6 +158,7 @@
 
     $('#pemohon').select2();
     $('#desa').select2();
+    $('#kecamatan').select2();
 
     function rndStr(len) {
         let text = "";
@@ -162,5 +174,27 @@
             check[0].toString();
         }
         $("#nib").val(check.join(""));
+    }
+
+    function ajax() {
+        let idKecamatan = $("#kecamatan").val();
+        if (!idKecamatan) {
+            $("#desa").html("");
+        }
+        $.ajax({
+            url: '<?= base_url('Dashboard/Petugas/Tanah/GetDesa/') ?>',
+            data: {
+                idKecamatan: idKecamatan
+            },
+            method: 'post',
+            success: function(data) {
+                let obj = JSON.parse(data)
+                for (i = 0; i < obj.length; i++) {
+                    obj[i] = `<option value = "` + obj[i].idDesa + `">` + obj[i].nama + `</option>`
+                    $("#desa").html(obj);
+                }
+            }
+
+        });
     }
 </script>

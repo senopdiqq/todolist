@@ -24,12 +24,12 @@ class Tanah extends CI_Controller
 
     public function store()
     {
-        $data['pemohon'] = $this->model->getAllPemohon();
-        $data['desa']    = $this->model->getAllDesa();
+        $data['pemohon']    = $this->model->getAllPemohon();
+        $data['kecamatan']  = $this->model->getAllKecamatan();
 
         $this->form_validation->set_rules('nib', 'NIB', 'required|trim|numeric', [
             'required'  => 'NIB tidak boleh kosong !',
-            'numeric'   => 'NIB harus berupa angka !'
+            'numeric'   => 'NIB harus berupa angka !',
         ]);
 
         $this->form_validation->set_rules('idPemohon', 'Pemohon', 'required|trim|numeric', [
@@ -38,7 +38,7 @@ class Tanah extends CI_Controller
         ]);
 
         $this->form_validation->set_rules('idDesa', 'Desa', 'required|trim|numeric', [
-            'required'  => 'Desa tidak boleh kosong !',
+            'required'  => 'Pilih Kecamatan Terlebih Dahulu',
             'numeric'   => 'ID Desa harus berupa angka !'
         ]);
 
@@ -88,6 +88,23 @@ class Tanah extends CI_Controller
             $this->load->view('dashboard/tanah/store', $data);
             $this->load->view('templates/footer');
         } else {
+            $this->model->store();
+            $this->session->set_tempdata(
+                'flash',
+                [
+                    'title' => 'Berhasil',
+                    'text'  => 'Tanah Berhasil Ditambahkan !',
+                    'type'  => 'success',
+
+                ],
+                0
+            );
+            redirect(base_url() . 'Dashboard/Petugas/Tanah');
         }
+    }
+
+    public function GetDesa()
+    {
+        echo json_encode($this->model->getDesaByAjax());
     }
 }
