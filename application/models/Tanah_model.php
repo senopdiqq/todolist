@@ -26,6 +26,13 @@ class Tanah_model extends CI_Model
         return $this->db->get('tb_kecamatan')->result();
     }
 
+    public function getTanah($nib)
+    {
+        return $this->db
+            ->join('tb_desa', 'tb_desa.idDesa = tb_tanah.idDesa')
+            ->where('nib', $nib)->get('tb_tanah')->row();
+    }
+
     public function store()
     {
 
@@ -40,6 +47,20 @@ class Tanah_model extends CI_Model
         );
 
         $this->db->insert('tb_tanah', $data);
+    }
+
+    public function edit($nib)
+    {
+        $data = array(
+            'idPemohon'     => $this->input->post('idPemohon', true),
+            'idDesa'        => $this->input->post('idDesa', true),
+            'luas_tanah'    => $this->input->post('luas_tanah', true),
+            'letak_tanah'   => $this->input->post('letak_tanah', true),
+            'rt'            => $this->input->post('rt', true),
+            'rw'            => $this->input->post('rw', true)
+        );
+
+        $this->db->where('nib', $nib)->update('tb_tanah', $data);
     }
 
     public function getDesaByAjax()
