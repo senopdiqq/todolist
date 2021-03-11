@@ -36,7 +36,7 @@
                                         <div class="col-md-12">
                                             <select id="kecamatan" name="kecamatan" class="form-control" style="width: 100%">
                                                 <option value=""></option>
-                                                <?php foreach($kecamatan as $k):  ?>
+                                                <?php foreach ($kecamatan as $k) :  ?>
                                                     <option value="<?= $k->idKecamatan ?>"><?= $k->nama_kecamatan ?></option>
                                                 <?php endforeach ?>
                                             </select>
@@ -104,7 +104,7 @@
                                         <i class="tio-search"></i>
                                     </div>
                                 </div>
-                                <input id="datatableSearch" type="search" autocomplete="off" class="form-control" placeholder="Cari Petugas">
+                                <input id="datatableSearch" type="search" autocomplete="off" class="form-control" placeholder="Cari Desa">
                             </div>
                             <!-- End Search -->
                         </form>
@@ -159,9 +159,9 @@
                                 <td><?= $p->statusnya; ?></td>
                                 <td class="text-center">
                                     <a href="<?= base_url('') ?>" class="badge badge-soft-success p-2 btn-edit" data-nama="<?= $p->nama ?>" data-kecamatan="<?= $p->idKecamatan ?>" data-status="<?= $p->statusnya ?>" data-id="<?= $p->idDesa ?>" data-toggle="modal" data-target="#ModalEdit">
-                                            <i class=" tio-edit"></i>
-                                            Edit</a>
-                                    <a href="<?= base_url('Dashboard/Petugas/desa/delete/'.$p->idDesa) ?>" class="badge badge-soft-danger p-2 alertAktivasi sweetalert">
+                                        <i class=" tio-edit"></i>
+                                        Edit</a>
+                                    <a href="<?= base_url('Dashboard/Petugas/desa/delete/' . $p->idDesa) ?>" class="badge badge-soft-danger p-2 alertAktivasi sweetalert">
                                         <i class="tio-delete"></i> Hapus
                                     </a>
 
@@ -187,25 +187,25 @@
                         </div>
                         <div class="modal-body">
                             <form action="<?= base_url("Dashboard/Petugas/desa/update") ?>" method="POST" enctype="multipart/form-data">
-                                    <input type="hidden" name="idDesa" id="editIdDesa">
-                                    <div class="form-group">
-                                        <label for="nama_desa" class="control-label">Nama Desa</label>
-                                        <input type="text" id="namaDesa" class="form-control" autocomplete="off" name="nama_desa">
-                                    </div>
-                                    <div class="row form-group">
-                                        <label for="ttl" class="col-sm-3 col-form-label input-label">Kecamatan</label>
+                                <input type="hidden" name="idDesa" id="editIdDesa">
+                                <div class="form-group">
+                                    <label for="nama_desa" class="control-label">Nama Desa</label>
+                                    <input type="text" id="namaDesa" class="form-control" autocomplete="off" name="nama_desa">
+                                </div>
+                                <div class="row form-group">
+                                    <label for="ttl" class="col-sm-3 col-form-label input-label">Kecamatan</label>
 
-                                        <div class="col-md-12">
-                                            <select id="kecamatanEdit" name="kecamatan" class="form-control" style="width: 100%">
-                                                <option value=""></option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="nama_role" class="control-label">Status</label>
-                                        <select name="status" id="editStatus" class="form-control">
+                                    <div class="col-md-12">
+                                        <select id="kecamatanEdit" name="kecamatan" class="form-control" style="width: 100%">
+                                            <option value=""></option>
                                         </select>
                                     </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="nama_role" class="control-label">Status</label>
+                                    <select name="status" id="editStatus" class="form-control">
+                                    </select>
+                                </div>
                         </div>
                         <div class="modal-footer">
                             <button type="submit" name="tambah" class="btn btn-success">
@@ -264,8 +264,9 @@
 
     <script>
         var base_url = "<?= base_url() ?>"
+
         function itemKecamatan(data, kecamatan) {
-            return (data.idKecamatan == kecamatan) ? `<option value="${data.idKecamatan}" selected>${data.nama_kecamatan}</option>` : `<option value="${data.idKecamatan}">${data.nama_kecamatan}</option>` 
+            return (data.idKecamatan == kecamatan) ? `<option value="${data.idKecamatan}" selected>${data.nama_kecamatan}</option>` : `<option value="${data.idKecamatan}">${data.nama_kecamatan}</option>`
         }
 
         $('.btn-edit').click(function() {
@@ -278,20 +279,20 @@
 
             $('#editStatus').html(itemStatus)
 
-            fetch(base_url+"Dashboard/Petugas/desa/getKecamatan", {
-                method : 'GET'
-            })
-            .then(res => res.json())
-            .then(res => {
-                var item = ''
-                res.forEach(data => {
-                    item += itemKecamatan(data, kecamatan)
+            fetch(base_url + "Dashboard/Petugas/desa/getKecamatan", {
+                    method: 'GET'
                 })
-                $('#kecamatanEdit').html(item)
-            })
+                .then(res => res.json())
+                .then(res => {
+                    var item = ''
+                    res.forEach(data => {
+                        item += itemKecamatan(data, kecamatan)
+                    })
+                    $('#kecamatanEdit').html(item)
+                })
         })
     </script>
-    
+
     <script type="text/javascript">
         $(document).ready(function() {
             $('#kecamatan').select2();

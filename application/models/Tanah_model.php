@@ -68,4 +68,15 @@ class Tanah_model extends CI_Model
         $idKecamatan = $this->input->post('idKecamatan', true);
         return $this->db->get_where('tb_desa', ['idKecamatan' => $idKecamatan])->result();
     }
+
+    public function delete($id)
+    {
+        $cek = $this->db->get_where('tb_permohonan', ['nib' => $id])->num_rows();
+        if ($cek == 0) {
+            $this->db->where('nib', $id)->delete('tb_tanah');
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

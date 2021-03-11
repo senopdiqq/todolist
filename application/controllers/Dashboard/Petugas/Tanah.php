@@ -189,4 +189,34 @@ class Tanah extends CI_Controller
     {
         echo json_encode($this->model->getDesaByAjax());
     }
+
+    public function delete($nib)
+    {
+        $query =  $this->model->delete($nib);
+
+        if ($query) {
+            $this->session->set_tempdata(
+                'flash',
+                [
+                    'title' => 'Berhasil',
+                    'text'  => 'Tanah Berhasil Dihapus !',
+                    'type'  => 'success',
+
+                ],
+                0
+            );
+        } else {
+            $this->session->set_tempdata(
+                'flash',
+                [
+                    'title' => 'Gagal',
+                    'text'  => 'Data Tanah sedang digunakan !',
+                    'type'  => 'error',
+
+                ],
+                0
+            );
+        }
+        redirect(base_url() . 'Dashboard/Petugas/Tanah');
+    }
 }

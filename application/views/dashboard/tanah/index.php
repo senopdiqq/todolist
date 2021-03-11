@@ -55,7 +55,7 @@
                                         <i class="tio-search"></i>
                                     </div>
                                 </div>
-                                <input id="datatableSearch" type="search" autocomplete="off" class="form-control" placeholder="Cari Pemohon">
+                                <input id="datatableSearch" type="search" autocomplete="off" class="form-control" placeholder="Cari Tanah">
                             </div>
                             <!-- End Search -->
                         </form>
@@ -123,7 +123,7 @@
                                     <a href="<?= base_url("Dashboard/Petugas/Tanah/edit/" . $p->nib) ?>" class="badge badge-soft-success p-2">
                                         <i class=" tio-edit"></i> Edit
                                     </a>
-                                    <a href="<?= base_url("Dashboard/Petugas/Tanah/delete/" . $p->nib) ?>" class="badge badge-soft-danger p-2">
+                                    <a href="<?= base_url("Dashboard/Petugas/Tanah/delete/" . $p->nib) ?>" class="badge badge-soft-danger p-2 sweetalert">
                                         <i class=" tio-delete"></i> Hapus
                                     </a>
                                 </td>

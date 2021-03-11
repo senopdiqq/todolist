@@ -134,28 +134,6 @@
     </div>
 </main>
 <script>
-    $('.tambahPemohon').click(function(e) {
-
-        swal({
-                title: "Peringatan!",
-                text: "Dengan klik tambah, anda tidak dapat mengubahnya lagi!",
-                icon: "warning",
-                buttons: {
-                    confirm: 'Ya, Tambah Pemohon',
-                    cancel: 'Batal'
-                },
-                dangerMode: true,
-            })
-            .then((willSubmit) => {
-
-                if (willSubmit) {
-                    $('#myForm').submit();
-                }
-            });
-
-
-    });
-
     $('#pemohon').select2();
     $('#desa').select2();
     $('#kecamatan').select2();

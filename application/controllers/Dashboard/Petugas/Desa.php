@@ -153,7 +153,7 @@ class Desa extends CI_Controller
                 'flash',
                 [
                     'title' => 'Whoopz!',
-                    'text'  => "Gagal Menghapus Desa !",
+                    'text'  => "Data Desa sedang Digunakan !",
                     'type'  => 'error',
 
                 ],
