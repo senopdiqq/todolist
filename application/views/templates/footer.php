@@ -3,7 +3,7 @@
 <div class="footer">
     <div class="row justify-content-between align-items-center">
         <div class="col">
-            <p class="font-size-sm mb-0">&copy; CopyRights <?= date('Y') ?> All Rights Reserved </p>
+            <p class="font-size-sm mb-0">&copy; CopyRights <?= $this->session->userdata('nama_ptsl') . " " . date('Y') ?> All Rights Reserved </p>
         </div>
 
     </div>

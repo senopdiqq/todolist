@@ -36,7 +36,6 @@ class Profil_model extends CI_Model
             }
         } else {
             $data = [
-                'foto' => "default.jpg",
                 'nama' => $this->input->post('nama_ptsl', true)
             ];
         }

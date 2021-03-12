@@ -8,13 +8,13 @@
     <aside class="js-navbar-vertical-aside navbar navbar-vertical-aside navbar-vertical navbar-vertical-fixed navbar-expand-xl navbar-bordered  ">
         <div class="navbar-vertical-container">
             <div class="navbar-vertical-footer-offset">
-                <div class="navbar-brand-wrapper justify-content-between">
+                <div class="navbar-brand-wrapper justify-content-center" style="height: auto;">
                     <!-- Logo -->
 
 
-                    <a class="navbar-brand" href="<?= base_url('') ?>" aria-label="Front">
-                        <img class="navbar-brand-logo" src="<?= base_url('assets/img/profil_klinik/') ?>" alt="Logo">
-                        <img class="navbar-brand-logo-mini" src="<?= base_url('assets/img/profil_klinik/') ?>" alt="Logo">
+                    <a class="navbar-brand" href="<?= base_url('Dashboard') ?>" aria-label="Front">
+                        <img class="navbar-brand-logo" style="min-width: 3.5rem;max-width: 3.5rem;" src="<?= base_url('assets/img/foto_user/' . $this->session->userdata('foto_ptsl')) ?>" alt="Logo">
+                        <img class="navbar-brand-logo-mini" src="<?= base_url('assets/img/foto_user/' . $this->session->userdata('foto_ptsl')) ?>" alt="Logo">
                     </a>
 
                     <!-- End Logo -->
@@ -75,6 +75,12 @@
                                         <a class="nav-link " href="<?= base_url('Dashboard/Petugas/Pemohon') ?>" title="Daftar Pemohon">
                                             <span class="tio-circle nav-indicator-icon"></span>
                                             <span class="text-truncate">Daftar Pemohon</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link " href="<?= base_url('Dashboard/Petugas/Permohonan/index') ?>" title="Daftar Permohonan">
+                                            <span class="tio-circle nav-indicator-icon"></span>
+                                            <span class="text-truncate">Daftar Permohonan</span>
                                         </a>
                                     </li>
 

@@ -30,7 +30,7 @@
                 <div class="col-lg-12 d-flex justify-content-center align-items-center min-vh-lg-100">
                     <div class="w-100 pt-10 pt-lg-7 pb-7" style="max-width: 25rem;">
                         <div class="text-center">
-                            <img src="<?= base_url('assets/img/profil_klinik/') ?>" alt="Logo" width="50%">
+                            <img src="<?= base_url('assets/img/foto_user/' . $getFoto->foto) ?>" alt="Logo" width="50%">
                         </div>
 
                         <!-- Form -->

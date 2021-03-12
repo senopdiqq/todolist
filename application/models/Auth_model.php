@@ -9,6 +9,8 @@ class Auth_model extends CI_Model
     {
         $get = $this->db->get_where('tb_user', ['username' => $username])->row();
 
+        $ptsl = $this->db->get('tb_profil_ptsl')->row();
+
         if ($get) {
 
             if (password_verify($password, $get->password)) {
@@ -21,7 +23,9 @@ class Auth_model extends CI_Model
                     'no_hp'         => $get->no_hp,
                     'jenis_kelamin' => $get->jenis_kelamin,
                     'username'      => $get->username,
-                    'idRole'        => $get->idRole
+                    'idRole'        => $get->idRole,
+                    'foto_ptsl'     => $ptsl->foto,
+                    'nama_ptsl'     => $ptsl->nama
                 ];
                 $this->session->set_userdata($data);
                 redirect(base_url() . 'dashboard/home');
@@ -51,5 +55,10 @@ class Auth_model extends CI_Model
             );
             redirect(base_url() . 'auth/index');
         }
+    }
+
+    public function getFoto()
+    {
+        return $this->db->get('tb_profil_ptsl')->row();
     }
 }
