@@ -13,7 +13,8 @@ class Auth extends CI_Controller
 
     public function index()
     {
-        $this->load->view('auth/index');
+        $data['getFoto'] = $this->model->getFoto();
+        $this->load->view('auth/index', $data);
     }
 
     public function login()
