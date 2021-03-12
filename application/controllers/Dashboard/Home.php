@@ -13,9 +13,19 @@ class Home extends CI_Controller
 
     public function index()
     {
+        $data = [
+            "petugas"           => $this->model->getPetugas(),
+            "pemohon_belum_ver" => $this->model->pemohonBelum(),
+            "pemohon_revisi"    => $this->model->pemohonRevisi(),
+            "pemohon_terver"    => $this->model->pemohonTerverifiksi(),
+            "kecamatan"         => $this->model->kecamatan(),
+            "desa"              => $this->model->desa(),
+            "tanah"             => $this->model->tanah()
+        ];
+
         $this->load->view('templates/navbar');
         $this->load->view('templates/sidebar');
-        $this->load->view('dashboard/index');
+        $this->load->view('dashboard/index', $data);
         $this->load->view('templates/footer');
     }
 
