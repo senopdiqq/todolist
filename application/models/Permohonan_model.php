@@ -20,4 +20,20 @@ class Permohonan_model extends CI_Model
         $this->db->join('tb_desa', 'tb_tanah.idDesa = tb_desa.idDesa');
         return $this->db->get_where('tb_tanah', ['idPemohon' => $idPemohon])->result();
     }
+
+    public function store()
+    {
+        $config['upload_path']          = './assets/img/foto_berkas/';
+        $config['allowed_types']        = 'jpeg|jpg|png';
+        $count = count($_FILES['scan_berkas']['name']);
+
+        $this->load->library('upload', $config);
+
+        if ($count == 0) return 0;
+
+        for ($i = 0; $i < $count; $i++) {
+            $nama[$i] = $_FILES['scan_berkas']['name'];
+            $path[$i] = $_FILES['scan_berkas']['tmp_name'];
+        }
+    }
 }

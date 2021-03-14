@@ -68,7 +68,7 @@
                             <label for="nama_lengkap" class="col-sm-3 col-form-label input-label">Scan Berkas</label>
 
                             <div class="col-sm-9">
-                            <input type="file" multiple id="scan_berkas" class="form-control" name="scan_berkas[]" >
+                                <input type="file" multiple id="scan_berkas" class="form-control" name="scan_berkas[]">
                             </div>
                         </div>
 
@@ -97,33 +97,7 @@
         </form>
     </div>
     </div>
-    <!-- Upload files Modal -->
-    <div class="modal fade" id="uploadFilesModal" tabindex="-1" role="dialog" aria-labelledby="uploadFilesModalTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <!-- Header -->
-                <div class="modal-header">
-                    <h4 id="uploadFilesModalTitle" class="modal-title">Add files</h4>
 
-                    <button type="button" class="btn btn-icon btn-sm btn-ghost-secondary" data-dismiss="modal" aria-label="Close">
-                        <i class="tio-clear tio-lg"></i>
-                    </button>
-                </div>
-                <!-- End Header -->
-
-                <!-- Body -->
-
-
-                <!-- Footer -->
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-white" data-dismiss="modal" aria-label="Close">Cancel</button>
-                    <button type="button" class="btn btn-primary">Upload</button>
-                </div>
-                <!-- End Footer -->
-            </div>
-        </div>
-    </div>
-    <!-- End Upload files Modal -->
 </main>
 
 <script>
@@ -136,7 +110,7 @@
                 text: "Dengan klik tambah, anda tidak dapat mengubahnya lagi!",
                 icon: "warning",
                 buttons: {
-                    confirm: 'Ya, Tambah Pemohon',
+                    confirm: 'Ya, Tambah Permohonan',
                     cancel: 'Batal'
                 },
                 dangerMode: true,
