@@ -90,9 +90,9 @@
                             <th>NIK</th>
                             <th>Nomor Berkas</th>
                             <th>NIB</th>
-                            <th>Letak Tanah</th>
+                            <th>Letak Tanah (Rt / Rw)</th>
                             <th>Status Permohonan</th>
-                            <th>Keterangan</th>
+                            <th>Aksi</th>
                             </th>
                         </tr>
                     </thead>
@@ -107,36 +107,35 @@
                             <tr role="row" class="even">
                                 <td>
                                     <?= $no; ?> </td>
-                                <td><?= $p->nama; ?></td>
-                                <td><?= $p->nik; ?></td>
-                                <td><?= $p->alamat; ?></td>
-                                <td><?= $p->pekerjaan; ?></td>
-                                <td><?= $p->umur . " tahun"; ?></td>
-                                <td><?= $p->jenis_kelamin; ?></td>
+                                <td><?= $p->nama ?></td>
+                                <td><?= $p->nik ?></td>
+                                <td><?= $p->nomor_berkas ?></td>
+                                <td><?= $p->nib ?></td>
+                                <td><?= $p->letak_tanah . " (" . $p->rt . " / " . $p->rw . ")"; ?></td>
                                 <td>
-                                    <?php if ($p->status_pemohon == "belum_terverifikasi") : ?>
+                                    <?php if ($p->status_permohonan == "belum_terverifikasi") : ?>
                                         <span class="badge badge-soft-danger p-2">
                                             Belum Terverifikasi
                                         </span>
-                                    <?php elseif ($p->status_pemohon == "revisi") : ?>
+                                    <?php elseif ($p->status_permohonan == "revisi") : ?>
                                         <span class="badge badge-soft-warning p-2">
-                                            Revisi Pemohon
+                                            Revisi Permohonan
                                         </span>
-                                    <?php elseif ($p->status_pemohon == "terverifikasi") : ?>
+                                    <?php elseif ($p->status_permohonan == "terverifikasi") : ?>
                                         <span class="badge badge-soft-success p-2">
                                             Terverifikasi
                                         </span>
                                     <?php endif; ?>
                                 </td>
                                 <td>
-                                    <?php if ($p->status_pemohon == "belum_terverifikasi") : ?>
+                                    <?php if ($p->status_permohonan == "belum_terverifikasi") : ?>
                                         <span class="badge badge-soft-secondary p-2">Menunggu Verifikasi Admin</span>
-                                    <?php elseif ($p->status_pemohon == "revisi") : ?>
-                                        <a href="<?= base_url("Dashboard/Petugas/Pemohon/revisi/" . $p->idPemohon) ?>" class="badge badge-soft-danger p-2">
+                                    <?php elseif ($p->status_permohonan == "revisi") : ?>
+                                        <a href="<?= base_url("Dashboard/Petugas/Permohonan/revisi/" . $p->idPermohonan) ?>" class="badge badge-soft-danger p-2">
                                             <i class=" tio-edit"></i> Revisi Data
                                         </a>
-                                    <?php elseif ($p->status_pemohon == "terverifikasi") : ?>
-                                        <a href="<?= base_url("Dashboard/Petugas/Pemohon/update/" . $p->idPemohon) ?>" class="badge badge-soft-success p-2">
+                                    <?php elseif ($p->status_permohonan == "terverifikasi") : ?>
+                                        <a href="<?= base_url("Dashboard/Petugas/Permohonan/edit/" . $p->idPermohonan) ?>" class="badge badge-soft-success p-2">
                                             <i class=" tio-edit"></i> Edit Data
                                         </a>
                                     <?php endif; ?>

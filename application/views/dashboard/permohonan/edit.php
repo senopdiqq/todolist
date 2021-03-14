@@ -4,7 +4,7 @@
         <div class="page-header">
             <div class="row align-items-center">
                 <div class="col-sm mb-2 mb-sm-0">
-                    <h1 class="page-header-title">Tambah Permohonan</h1>
+                    <h1 class="page-header-title">Edit Data</h1>
                 </div>
 
             </div>
@@ -16,7 +16,7 @@
                 <!-- Card -->
                 <div class="card mb-3 mb-lg-5">
                     <div class="card-header">
-                        <h2 class="card-title h4">Data Permohonan</h2>
+                        <h2 class="card-title h4">Data Pemohon</h2>
                     </div>
 
                     <!-- Body -->
@@ -25,10 +25,14 @@
 
                         <!-- Form Group -->
                         <div class="row form-group">
+                            <label for="nama_lengkap" class="col-sm-3 col-form-label input-label">Nomor Berkas</label>
+
                             <div class="col-sm-9">
-                                <button onclick="rndStr(11)" type="button" class="btn btn-success mr-2"><i class="tio-add-circle"></i> Auto Generate Nomor Berkas</button>
+                                <input type="text" id="nomor_berkas" placeholder="10331955059" value="<?= $data->nomor_berkas ?>" readonly autocomplete="off" class="form-control" name="nomor_berkas" value="<?= set_value('nomor_berkas'); ?>">
                             </div>
                         </div>
+
+
                         <!-- Form Group -->
                         <div class="row form-group">
                             <label for="nama_pemohon" class="col-sm-3 col-form-label input-label">Nama Pemohon</label>
@@ -37,7 +41,7 @@
                                 <select id="pemohon" name="idPemohon" onchange="return ajax()" class="form-control" style="width: 100%">
                                     <option value="">-- Pilih Pemohon --</option>
                                     <?php foreach ($pemohon as $k) :  ?>
-                                        <option value="<?= $k->idPemohon ?>" <?= $data = (isset($_POST['idPemohon']) && $_POST['idPemohon'] == $k->idPemohon ? 'selected' : '') ?>><?= $k->nama . " / " .  $k->nik  ?></option>
+                                        <option value="<?= $k->idPemohon ?>" <?= $option = (isset($_POST['idPemohon']) && $_POST['idPemohon'] == $k->idPemohon || $data->idPemohon == $k->idPemohon ? 'selected' : '') ?>><?= $k->nama . " / " .  $k->nik  ?></option>
                                     <?php endforeach ?>
                                 </select>
                             </div>
@@ -54,14 +58,6 @@
                             </div>
                         </div>
                         <!-- End Form Group -->
-                        <!-- Form Group -->
-                        <div class="row form-group">
-                            <label for="nama_lengkap" class="col-sm-3 col-form-label input-label">Nomor Berkas</label>
-
-                            <div class="col-sm-9">
-                                <input type="text" id="nomor_berkas" placeholder="10331955059" readonly autocomplete="off" class="form-control" name="nomor_berkas" value="<?= set_value('nomor_berkas'); ?>">
-                            </div>
-                        </div>
 
                         <!-- Form Group -->
                         <div class="row form-group">
@@ -72,16 +68,13 @@
                             </div>
                         </div>
 
-
-
-
                     </div>
                     <!-- End Body -->
                     <!-- Footer -->
 
                     <div class="card-footer d-flex justify-content-end align-items-center">
-                        <button type="button" class="btn btn-primary tambahPemohon">
-                            <i class="tio-add-circle"></i> Tambah Permohonan
+                        <button type="button" class="btn btn-primary revisiPemohon">
+                            <i class="tio-edit"></i> Edit Data
                         </button>
 
                     </div>
@@ -97,20 +90,18 @@
         </form>
     </div>
     </div>
-
 </main>
-
 <script>
     $('#pemohon').select2();
     $('#tanah').select2();
-    $('.tambahPemohon').click(function(e) {
+    $('.revisiPemohon').click(function(e) {
 
         swal({
                 title: "Peringatan!",
-                text: "Dengan klik tambah, anda tidak dapat mengubahnya lagi!",
+                text: "Dengan klik edit, anda tidak dapat mengubahnya lagi!",
                 icon: "warning",
                 buttons: {
-                    confirm: 'Ya, Tambah Permohonan',
+                    confirm: 'Ya, Edit Pemohon',
                     cancel: 'Batal'
                 },
                 dangerMode: true,
@@ -124,21 +115,6 @@
 
 
     });
-
-    function rndStr(len) {
-        let text = "";
-        let chars =
-            "01234567890";
-
-        for (let i = 0; i < len; i++) {
-            text += chars.charAt(Math.floor(Math.random() * chars.length));
-        }
-        let check = text.split("");
-        if (check[0] == 0) {
-            check[0] = Math.floor(Math.random() * 9) + 1;
-        }
-        $("#nomor_berkas").val(check.join(""));
-    }
 
     function ajax() {
         let pemohon = $("#pemohon").val();
@@ -163,7 +139,35 @@
         });
     }
 
+    function getSelectedDesa() {
+        let pemohon = $("#pemohon").val();
+        console.log(pemohon)
+        if (!pemohon) {
+            $("#tanah").html("");
+        }
+        $.ajax({
+            url: '<?= base_url('Dashboard/Petugas/Permohonan/getNib/') ?>',
+            data: {
+                pemohon: pemohon
+            },
+            method: 'post',
+            success: function(data) {
+                let obj = JSON.parse(data)
+                var option = ""
+                obj.forEach(val => {
+                    if (val.idDesa == <?= $data->idDesa ?>) {
+                        option += `<option value = "${val.nib}" selected>${val.nama}</option>`
+                    } else {
+                        option += `<option value = "${val.nib}">${val.nama}</option>`
+                    }
+                })
+                $("#tanah").html(option);
+            }
+
+        });
+    }
+
     $(document).ready(function() {
-        ajax()
+        getSelectedDesa()
     })
 </script>

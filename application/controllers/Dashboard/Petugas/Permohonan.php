@@ -68,20 +68,8 @@ class Permohonan extends CI_Controller
             $this->load->view('dashboard/permohonan/store', $data);
             $this->load->view('templates/footer');
         } else {
-            $init = $this->model->store();
-            if ($init == 1) {
-                $this->session->set_tempdata(
-                    'flash',
-                    [
-                        'title' => 'Berhasil',
-                        'text'  => 'Permohonan Berhasil Ditambah !',
-                        'type'  => 'success',
 
-                    ],
-                    0
-                );
-                redirect(base_url() . 'Dashboard/Petugas/Permohonan');
-            } else if ($init == 0) {
+            if (empty($_FILES['scan_berkas']['name'])) {
                 $this->session->set_tempdata(
                     'flash',
                     [
@@ -95,6 +83,201 @@ class Permohonan extends CI_Controller
                 $this->load->view('templates/navbar');
                 $this->load->view('templates/sidebar');
                 $this->load->view('dashboard/permohonan/store', $data);
+                $this->load->view('templates/footer');
+            } else {
+                $init = $this->model->store();
+
+                if ($init == 1) {
+                    $this->session->set_tempdata(
+                        'flash',
+                        [
+                            'title' => 'Berhasil',
+                            'text'  => 'Permohonan Berhasil Ditambah !',
+                            'type'  => 'success',
+
+                        ],
+                        0
+                    );
+                    redirect(base_url() . 'Dashboard/Petugas/Permohonan');
+                } else {
+                    $this->session->set_tempdata(
+                        'flash',
+                        [
+                            'title' => 'Whoopz!',
+                            'text'  => $init,
+                            'type'  => 'error',
+
+                        ],
+                        0
+                    );
+                    $this->load->view('templates/navbar');
+                    $this->load->view('templates/sidebar');
+                    $this->load->view('dashboard/permohonan/store', $data);
+                    $this->load->view('templates/footer');
+                }
+            }
+        }
+    }
+
+    public function revisi($id)
+    {
+        $data['data'] = $this->model->getPermohonan($id);
+        $data['pemohon'] = $this->model->getAllPemohon();
+
+        $this->form_validation->set_rules('idPemohon', 'Nama Pemohon', 'required|trim|numeric', [
+
+            'required'      => 'Nama Pemohon tidak boleh kosong !',
+            'numeric'       => 'ID Pemohon hanya boleh Angka !'
+
+        ]);
+        $this->form_validation->set_rules('nib', 'NIB', 'required|trim|numeric', [
+
+            'required'  => 'NIB tidak boleh kosong !',
+            'numeric'   => 'NIB hanya boleh angka !',
+
+        ]);
+
+        $this->form_validation->set_rules('nomor_berkas', 'Nomor Berkas', 'required|trim|numeric', [
+
+            'required'  => 'Nomor Berkas tidak boleh kosong !',
+            'numeric'   => 'Nomor Berkas hanya boleh angka !',
+
+        ]);
+
+        if ($this->form_validation->run() == FALSE) {
+            $arr = array('idPemohon', 'nib', 'nomor_berkas');
+            foreach ($arr as $a) {
+                if (form_error($a)) {
+                    $error = form_error($a);
+                    $this->session->set_tempdata(
+                        'flash',
+                        [
+                            'title' => 'Whoopz!',
+                            'text'  => $error,
+                            'type'  => 'error',
+
+                        ],
+                        0
+                    );
+                    break;
+                }
+            }
+            $this->load->view('templates/navbar');
+            $this->load->view('templates/sidebar');
+            $this->load->view('dashboard/permohonan/revisi', $data);
+            $this->load->view('templates/footer');
+        } else {
+
+            $init = $this->model->revisi($id);
+
+            if ($init == 1) {
+                $this->session->set_tempdata(
+                    'flash',
+                    [
+                        'title' => 'Berhasil',
+                        'text'  => 'Permohonan Berhasil Direvisi !',
+                        'type'  => 'success',
+
+                    ],
+                    0
+                );
+                redirect(base_url() . 'Dashboard/Petugas/Permohonan');
+            } else {
+                $this->session->set_tempdata(
+                    'flash',
+                    [
+                        'title' => 'Whoopz!',
+                        'text'  => $init,
+                        'type'  => 'error',
+
+                    ],
+                    0
+                );
+                $this->load->view('templates/navbar');
+                $this->load->view('templates/sidebar');
+                $this->load->view('dashboard/permohonan/revisi', $data);
+                $this->load->view('templates/footer');
+            }
+        }
+    }
+
+    public function edit($id)
+    {
+        $data['data'] = $this->model->getPermohonan($id);
+        $data['pemohon'] = $this->model->getAllPemohon();
+
+        $this->form_validation->set_rules('idPemohon', 'Nama Pemohon', 'required|trim|numeric', [
+
+            'required'      => 'Nama Pemohon tidak boleh kosong !',
+            'numeric'       => 'ID Pemohon hanya boleh Angka !'
+
+        ]);
+        $this->form_validation->set_rules('nib', 'NIB', 'required|trim|numeric', [
+
+            'required'  => 'NIB tidak boleh kosong !',
+            'numeric'   => 'NIB hanya boleh angka !',
+
+        ]);
+
+        $this->form_validation->set_rules('nomor_berkas', 'Nomor Berkas', 'required|trim|numeric', [
+
+            'required'  => 'Nomor Berkas tidak boleh kosong !',
+            'numeric'   => 'Nomor Berkas hanya boleh angka !',
+
+        ]);
+
+        if ($this->form_validation->run() == FALSE) {
+            $arr = array('idPemohon', 'nib', 'nomor_berkas');
+            foreach ($arr as $a) {
+                if (form_error($a)) {
+                    $error = form_error($a);
+                    $this->session->set_tempdata(
+                        'flash',
+                        [
+                            'title' => 'Whoopz!',
+                            'text'  => $error,
+                            'type'  => 'error',
+
+                        ],
+                        0
+                    );
+                    break;
+                }
+            }
+            $this->load->view('templates/navbar');
+            $this->load->view('templates/sidebar');
+            $this->load->view('dashboard/permohonan/edit', $data);
+            $this->load->view('templates/footer');
+        } else {
+
+            $init = $this->model->revisi($id);
+
+            if ($init == 1) {
+                $this->session->set_tempdata(
+                    'flash',
+                    [
+                        'title' => 'Berhasil',
+                        'text'  => 'Permohonan Berhasil Diedit !',
+                        'type'  => 'success',
+
+                    ],
+                    0
+                );
+                redirect(base_url() . 'Dashboard/Petugas/Permohonan');
+            } else {
+                $this->session->set_tempdata(
+                    'flash',
+                    [
+                        'title' => 'Whoopz!',
+                        'text'  => $init,
+                        'type'  => 'error',
+
+                    ],
+                    0
+                );
+                $this->load->view('templates/navbar');
+                $this->load->view('templates/sidebar');
+                $this->load->view('dashboard/permohonan/edit', $data);
                 $this->load->view('templates/footer');
             }
         }
