@@ -15,10 +15,11 @@ class VerifPermohonan extends CI_Controller
     {
 
         $data['desa'] = $this->model->getDesa();
+        //  $data['hitung'] = $this->model->countPermohonan();
 
         $this->load->view('templates/navbar');
         $this->load->view('templates/sidebar');
-        $this->load->view('dashboard/verifPermohonan/index', $data);
+        $this->load->view('dashboard/verifPermohonan/index');
         $this->load->view('templates/footer');
     }
 

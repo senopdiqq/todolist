@@ -1,3 +1,8 @@
+<?php
+
+$this->load->model('VerifPermohonan_model', 'model');
+$desa = $this->model->getDesa();
+?>
 <main id="content" role="main" class="main">
     <!-- Content -->
     <div class="content container-fluid">
@@ -95,7 +100,6 @@
                         <?php
                         $no = 1;
                         foreach ($desa as $p) :
-
                         ?>
 
                             <tr role="row" class="even">
@@ -105,7 +109,7 @@
                                 <td><?= $p->nama_kecamatan; ?></td>
                                 <td>
                                     <span class="badge badge-danger">
-                                        <?= count($hitung) ?>
+
                                     </span>
                                 </td>
                                 <td><?= $p->statusnya; ?></td>
