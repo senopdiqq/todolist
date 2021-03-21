@@ -86,73 +86,77 @@
             <!-- Card -->
 
             <!-- Card -->
-            <div class="card mb-3 mb-lg-5">
-                <div class="card-header">
-                    <h2 class="card-title h4">Detail Permohonan</h2>
+            <form action="">
+                <div class="card mb-3 mb-lg-5">
+                    <div class="card-header">
+                        <h2 class="card-title h4">Detail Permohonan</h2>
+                    </div>
+
+                    <!-- Body -->
+
+                    <div class="card-body">
+
+                        <div class="row form-group">
+                            <label for="nama_pemohon" class="col-sm-3 col-form-label input-label">Nama Pemohon</label>
+
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" readonly value="<?= $permohonan->nama ?>">
+                            </div>
+                        </div>
+                        <!-- End Form Group -->
+                        <!-- Form Group -->
+                        <div class="row form-group">
+                            <label for="nama_desa" class="col-sm-3 col-form-label input-label">Nama Desa</label>
+
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" readonly value="<?= $permohonan->nama_desa ?>">
+                            </div>
+                        </div>
+                        <!-- End Form Group -->
+                        <!-- Form Group -->
+                        <div class="row form-group">
+                            <label for="nama_lengkap" class="col-sm-3 col-form-label input-label">Nomor Berkas</label>
+
+                            <div class="col-sm-9">
+                                <input type="text" id="nomor_berkas" placeholder="10331955059" readonly autocomplete="off" class="form-control" name="nomor_berkas" value="<?= $permohonan->nomor_berkas ?>">
+                            </div>
+                        </div>
+
+                        <!-- Form Group -->
+                        <div class="row form-group">
+                            <label for="nama_lengkap" class="col-sm-3 col-form-label input-label">Scan Berkas <i class="tio-help-outlined text-body ml-1" data-toggle="tooltip" data-placement="top" title="" data-original-title="Klik untuk melihat berkas"></i></label>
+
+                            <div class="col-sm-9">
+                                <a href="<?= base_url('Dashboard/Admin/VerifPermohonan/showPdf/' . $permohonan->scan_berkas) ?>" target="_blank" class="badge badge-success p-2">Lihat Berkas</a>
+                            </div>
+                        </div>
+
+                        <!-- Form Group -->
+                        <div class="row form-group">
+                            <label for="nama_desa" class="col-sm-3 col-form-label input-label">Keterangan</label>
+
+                            <div class="col-sm-9">
+                                <textarea required name="keterangan" class="form-control" id="" cols="30" rows="10"></textarea>
+                            </div>
+                        </div>
+                        <!-- End Form Group -->
+
+
+                    </div>
+                    <!-- End Body -->
+                    <!-- Footer -->
+
+                    <div class="card-footer d-flex justify-content-end align-items-center">
+                        <a href="<?= base_url('Dashboard/Admin/VerifPermohonan/verified/' . $permohonan->idPermohonan) ?>" type="button" class="badge badge-soft-success p-2 mr-3 verifikasi">
+                            <i class="tio-done"></i> Verifikasi Permohonan
+                        </a>
+                        <a type="submit" class="badge badge-soft-danger p-2">
+                            <i class="tio-edit"></i> Revisi Permohonan
+                        </a>
+                    </div>
+                    <!-- End Footer -->
                 </div>
-
-                <!-- Body -->
-
-                <div class="card-body">
-
-                    <div class="row form-group">
-                        <label for="nama_pemohon" class="col-sm-3 col-form-label input-label">Nama Pemohon</label>
-
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control" readonly value="<?= $permohonan->nama ?>">
-                        </div>
-                    </div>
-                    <!-- End Form Group -->
-                    <!-- Form Group -->
-                    <div class="row form-group">
-                        <label for="nama_desa" class="col-sm-3 col-form-label input-label">Nama Desa</label>
-
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control" readonly value="<?= $permohonan->nama_desa ?>">
-                        </div>
-                    </div>
-                    <!-- End Form Group -->
-                    <!-- Form Group -->
-                    <div class="row form-group">
-                        <label for="nama_lengkap" class="col-sm-3 col-form-label input-label">Nomor Berkas</label>
-
-                        <div class="col-sm-9">
-                            <input type="text" id="nomor_berkas" placeholder="10331955059" readonly autocomplete="off" class="form-control" name="nomor_berkas" value="<?= $permohonan->nomor_berkas ?>">
-                        </div>
-                    </div>
-
-                    <!-- Form Group -->
-                    <div class="row form-group">
-                        <label for="nama_lengkap" class="col-sm-3 col-form-label input-label">Scan Berkas <i class="tio-help-outlined text-body ml-1" data-toggle="tooltip" data-placement="top" title="" data-original-title="Klik untuk melihat berkas"></i></label>
-
-                        <div class="col-sm-9">
-                            <a href="<?= base_url('assets/img/foto_berkas/' . $permohonan->scan_berkas) ?>" target="_blank" class="badge badge-success p-2"><?= $permohonan->scan_berkas ?></a>
-                        </div>
-                    </div>
-
-                    <!-- Form Group -->
-                    <div class="row form-group">
-                        <label for="nama_desa" class="col-sm-3 col-form-label input-label">Keterangan</label>
-
-                        <div class="col-sm-9">
-                            <textarea name="keterangan" id="" cols="30" rows="10"></textarea>
-                        </div>
-                    </div>
-                    <!-- End Form Group -->
-
-
-                </div>
-                <!-- End Body -->
-                <!-- Footer -->
-
-                <div class="card-footer d-flex justify-content-end align-items-center">
-                    <button type="button" class="btn btn-primary tambahPemohon">
-                        <i class="tio-add-circle"></i> Tambah Permohonan
-                    </button>
-
-                </div>
-                <!-- End Footer -->
-            </div>
+            </form>
             <!-- End Card -->
 
 
@@ -169,22 +173,25 @@
 <script>
     $('#pemohon').select2();
     $('#tanah').select2();
-    $('.tambahPemohon').click(function(e) {
+
+    $('.verifikasi').click(function(e) {
+
+        e.preventDefault();
+        const href = $(this).attr('href');
 
         swal({
-                title: "Peringatan!",
-                text: "Dengan klik tambah, anda tidak dapat mengubahnya lagi!",
+                title: "Apa Anda Yakin?",
+                text: "Dengan klik Ya, permohonan akan diverifikasi",
                 icon: "warning",
                 buttons: {
-                    confirm: 'Ya, Tambah Permohonan',
+                    confirm: 'Ya',
                     cancel: 'Batal'
                 },
                 dangerMode: true,
             })
-            .then((willSubmit) => {
-
-                if (willSubmit) {
-                    $('#myForm').submit();
+            .then((willDelete) => {
+                if (willDelete) {
+                    document.location.href = href
                 }
             });
 
