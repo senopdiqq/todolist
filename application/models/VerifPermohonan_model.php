@@ -17,6 +17,8 @@ class VerifPermohonan_model extends CI_Model
 
     public function getTanahByIdDesa($id)
     {
+        $this->db->join('tb_permohonan', 'tb_permohonan.nib = tb_tanah.nib');
+        $this->db->where('status_permohonan', 'belum_terverifikasi');
         return $this->db->get_where('tb_tanah', ['idDesa' => $id])->result();
     }
 
@@ -41,7 +43,7 @@ class VerifPermohonan_model extends CI_Model
         $this->db->join('tb_tanah', 'tb_tanah.nib = tb_permohonan.nib');
         $this->db->join('tb_desa', 'tb_tanah.idDesa = tb_desa.idDesa');
         $this->db->join('tb_pemohon', 'tb_pemohon.idPemohon = tb_tanah.idPemohon');
-        $this->db->where('idPermohonan', $id);
+        $this->db->where('tb_permohonan.nib', $id);
         return $this->db->get('tb_permohonan')->row();
     }
 
@@ -56,16 +58,15 @@ class VerifPermohonan_model extends CI_Model
         return $this->db->update('tb_permohonan');
     }
 
-    public function revisi()
+    public function revisi($id)
     {
-        $id = $this->input->post('idPemohon', true);
-        $cek = $this->db->get_where('tb_pemohon', ['idPemohon' => $id])->row();
+        $cek = $this->db->get_where('tb_permohonan', ['nib' => $id])->row();
 
         if ($cek->status_pemohon == 'revisi') return false;
 
-        $this->db->set('status_pemohon', 'revisi');
+        $this->db->set('status_permohonan', 'revisi');
         $this->db->set('keterangan', $this->input->post('keterangan', true));
-        $this->db->where('idPemohon', $id);
-        return $this->db->update('tb_pemohon');
+        $this->db->where('nib', $id);
+        return $this->db->update('tb_permohonan');
     }
 }

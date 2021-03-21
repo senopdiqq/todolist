@@ -1,7 +1,5 @@
 <?php
-
-$this->load->model('VerifPermohonan_model', 'model');
-$desa = $this->model->getDesa();
+$getTanah = $this->load->model('VerifPermohonan_model', 'model');
 ?>
 <main id="content" role="main" class="main">
     <!-- Content -->
@@ -70,7 +68,7 @@ $desa = $this->model->getDesa();
                 <table id="datatable" class="table table-lg table-borderless table-thead-bordered table-nowrap table-align-middle card-table" data-hs-datatables-options='{
                      "columnDefs": [{
                         "targets": [0, 2],
-                        "orderable": false
+                        "orderable": true
                       }],
                      "order": [],
                      "info": {
@@ -79,8 +77,8 @@ $desa = $this->model->getDesa();
                      "search": "#datatableSearch",
                      "entries": "#datatableEntries",
                      "pageLength": 15,
-                     "isResponsive": false,
-                     "isShowPaging": false,
+                     "isResponsive": true,
+                     "isShowPaging": true,
                      "pagination": "datatablePagination"
                    }'>
                     <thead class="thead-light">
@@ -100,6 +98,7 @@ $desa = $this->model->getDesa();
                         <?php
                         $no = 1;
                         foreach ($desa as $p) :
+                            $tanah = $this->model->getTanahByIdDesa($p->idDesa);
                         ?>
 
                             <tr role="row" class="even">
@@ -108,9 +107,15 @@ $desa = $this->model->getDesa();
                                 <td><?= $p->nama; ?></td>
                                 <td><?= $p->nama_kecamatan; ?></td>
                                 <td>
-                                    <span class="badge badge-danger">
-
-                                    </span>
+                                    <?php if (count($tanah) > 0) { ?>
+                                        <span class="badge badge-danger">
+                                            <?= count($tanah) . " Permohonan"; ?>
+                                        </span>
+                                    <?php } else { ?>
+                                        <span class="badge badge-secondary">
+                                            Belum ada Permohonan
+                                        </span>
+                                    <?php }; ?>
                                 </td>
                                 <td><?= $p->statusnya; ?></td>
                                 <td class="text-center">
