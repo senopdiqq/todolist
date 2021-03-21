@@ -104,9 +104,9 @@
                                 <td><?= $p->nama; ?></td>
                                 <td><?= $p->nama_kecamatan; ?></td>
                                 <td>
-                                    <span class="badge badge-danger">
+                                    <!-- <span class="badge badge-danger">
                                         <?= count($hitung) ?>
-                                    </span>
+                                    </span> -->
                                 </td>
                                 <td><?= $p->statusnya; ?></td>
                                 <td class="text-center">

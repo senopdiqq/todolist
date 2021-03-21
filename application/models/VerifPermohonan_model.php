@@ -53,16 +53,15 @@ class VerifPermohonan_model extends CI_Model
         return $this->db->update('tb_permohonan');
     }
 
-    public function revisi()
+    public function revisi($id)
     {
-        $id = $this->input->post('idPemohon', true);
-        $cek = $this->db->get_where('tb_pemohon', ['idPemohon' => $id])->row();
+        $cek = $this->db->get_where('tb_permohonan', ['nib' => $id])->row();
 
         if ($cek->status_pemohon == 'revisi') return false;
 
-        $this->db->set('status_pemohon', 'revisi');
+        $this->db->set('status_permohonan', 'revisi');
         $this->db->set('keterangan', $this->input->post('keterangan', true));
-        $this->db->where('idPemohon', $id);
-        return $this->db->update('tb_pemohon');
+        $this->db->where('nib', $id);
+        return $this->db->update('tb_permohonan');
     }
 }

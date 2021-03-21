@@ -71,21 +71,19 @@ class VerifPermohonan extends CI_Controller
                 0
             );
         }
-        redirect(base_url() . 'Dashboard/Admin/VerifPermohonan/pemohon/' . $desa->nib);
+        redirect(base_url() . 'Dashboard/Admin/VerifPermohonan/pemohon/' . $desa->idDesa);
     }
 
-    public function revisi()
+    public function revisi($id)
     {
         $this->form_validation->set_rules('keterangan', 'Keterangan', 'required|trim', [
             'required'  => 'Keterangan tidak boleh kosong'
         ]);
-        $this->form_validation->set_rules('idPemohon', 'Id Pemohon', 'required|trim|numeric', [
-            'required'  => 'Id Pemohon tidak boleh kosong',
-            'numeric'   => 'Id Pemohon harus berupa Angka'
-        ]);
+
+        $desa = $this->model->getTanah($id);
 
         if ($this->form_validation->run() == FALSE) {
-            $arr = array('keterangan', 'idPemohon');
+            $arr = array('keterangan');
             foreach ($arr as $a) {
                 if (form_error($a)) {
                     $error = form_error($a);
@@ -102,9 +100,9 @@ class VerifPermohonan extends CI_Controller
                     break;
                 }
             }
-            redirect(base_url() . 'Dashboard/Admin/VerifPemohon');
+            redirect(base_url() . 'Dashboard/Admin/VerifPermohonan/pemohon/' . $desa->idDesa);
         } else {
-            $valid = $this->model->revisi();
+            $valid = $this->model->revisi($id);
             if ($valid) {
                 $this->session->set_tempdata(
                     'flash',
@@ -128,7 +126,7 @@ class VerifPermohonan extends CI_Controller
                     0
                 );
             }
-            redirect(base_url() . 'Dashboard/Admin/VerifPemohon');
+            redirect(base_url() . 'Dashboard/Admin/VerifPermohonan/pemohon/' . $desa->idDesa);
         }
     }
 

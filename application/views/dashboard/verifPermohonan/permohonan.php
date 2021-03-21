@@ -86,7 +86,7 @@
             <!-- Card -->
 
             <!-- Card -->
-            <form action="">
+            <form action="<?= base_url('Dashboard/Admin/VerifPermohonan/revisi/' . $permohonan->nib) ?>" id="formRevisi" method="POST">
                 <div class="card mb-3 mb-lg-5">
                     <div class="card-header">
                         <h2 class="card-title h4">Detail Permohonan</h2>
@@ -136,7 +136,7 @@
                             <label for="nama_desa" class="col-sm-3 col-form-label input-label">Keterangan</label>
 
                             <div class="col-sm-9">
-                                <textarea required name="keterangan" class="form-control" id="" cols="30" rows="10"></textarea>
+                                <textarea name="keterangan" class="form-control" id="" cols="30" rows="10"></textarea>
                             </div>
                         </div>
                         <!-- End Form Group -->
@@ -150,7 +150,7 @@
                         <a href="<?= base_url('Dashboard/Admin/VerifPermohonan/verified/' . $permohonan->nib) ?>" type="button" class="badge badge-soft-success p-2 mr-3 verifikasi">
                             <i class="tio-done"></i> Verifikasi Permohonan
                         </a>
-                        <a type="submit" class="badge badge-soft-danger p-2">
+                        <a type="submit" class="badge badge-soft-danger p-2 revisi">
                             <i class="tio-edit"></i> Revisi Permohonan
                         </a>
                     </div>
@@ -173,6 +173,30 @@
 <script>
     $('#pemohon').select2();
     $('#tanah').select2();
+
+    $('.revisi').click(function(e) {
+
+        e.preventDefault();
+        const href = $(this).attr('href');
+
+        swal({
+                title: "Apa Anda Yakin?",
+                text: "Dengan klik Ya, permohonan akan direvisi",
+                icon: "warning",
+                buttons: {
+                    confirm: 'Ya',
+                    cancel: 'Batal'
+                },
+                dangerMode: true,
+            })
+            .then((willDelete) => {
+                if (willDelete) {
+                    $('#formRevisi').submit()
+                }
+            });
+
+
+    });
 
     $('.verifikasi').click(function(e) {
 
