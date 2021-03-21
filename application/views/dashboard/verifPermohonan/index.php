@@ -83,6 +83,7 @@
                             <th>No</th>
                             <th>Desa / Kelurahan</th>
                             <th>Kecamatan</th>
+                            <th>Jumlah Permohonan</th>
                             <th>Status</th>
                             <th>
                                 <center>Aksi</center>
@@ -102,6 +103,11 @@
                                     <?= $no; ?> </td>
                                 <td><?= $p->nama; ?></td>
                                 <td><?= $p->nama_kecamatan; ?></td>
+                                <td>
+                                    <span class="badge badge-danger">
+                                        <?= count($hitung) ?>
+                                    </span>
+                                </td>
                                 <td><?= $p->statusnya; ?></td>
                                 <td class="text-center">
                                     <a href="<?= base_url('Dashboard/Admin/VerifPermohonan/pemohon/' . $p->idDesa) ?>" class="badge badge-soft-success p-2">

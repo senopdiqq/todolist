@@ -13,6 +13,7 @@ class VerifPermohonan extends CI_Controller
 
     public function index()
     {
+
         $data['desa'] = $this->model->getDesa();
 
         $this->load->view('templates/navbar');
@@ -43,6 +44,8 @@ class VerifPermohonan extends CI_Controller
 
     public function verified($id)
     {
+        $desa = $this->model->getTanah($id);
+
         $valid = $this->model->verifyPermohonan($id);
         if ($valid) {
 
@@ -68,7 +71,7 @@ class VerifPermohonan extends CI_Controller
                 0
             );
         }
-        redirect(base_url() . 'Dashboard/Admin/VerifPermohonan/permohonan/' . $id);
+        redirect(base_url() . 'Dashboard/Admin/VerifPermohonan/pemohon/' . $desa->nib);
     }
 
     public function revisi()

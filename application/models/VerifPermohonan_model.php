@@ -4,9 +4,22 @@ defined('BASEPATH') or die('No direct script access allowed');
 class VerifPermohonan_model extends CI_Model
 {
 
+
+    public function getTanah($id)
+    {
+        return $this->db->get_where('tb_tanah', ['nib' => $id])->row();
+    }
+
     public function getDesa()
     {
         $this->db->join('tb_kecamatan', 'tb_kecamatan.idKecamatan = tb_desa.idKecamatan');
+        return $this->db->get('tb_desa')->result();
+    }
+
+    public function countPermohonan()
+    {
+        $this->db->join('tb_kecamatan', 'tb_kecamatan.idKecamatan = tb_desa.idKecamatan');
+        $this->db->join('tb_tanah', 'tb_tanah.idDesa = tb_desa.idDesa');
         return $this->db->get('tb_desa')->result();
     }
 
@@ -31,12 +44,12 @@ class VerifPermohonan_model extends CI_Model
 
     public function verifyPermohonan($id)
     {
-        $cek = $this->db->get_where('tb_permohonan', ['idPermohonan' => $id])->row();
+        $cek = $this->db->get_where('tb_permohonan', ['nib' => $id])->row();
 
         if ($cek->status_permohonan == 'terverifikasi') return false;
 
         $this->db->set('status_permohonan', 'terverifikasi');
-        $this->db->where('idPermohonan', $id);
+        $this->db->where('nib', $id);
         return $this->db->update('tb_permohonan');
     }
 
