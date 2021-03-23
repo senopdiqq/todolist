@@ -22,12 +22,6 @@ class VerifPermohonan_model extends CI_Model
         return $this->db->get_where('tb_tanah', ['idDesa' => $id])->result();
     }
 
-    public function countPermohonan()
-    {
-        //  $this->db->where('status_permohonan', 'belum_terverifikasi');
-        //  $this->db->get_where('tb_permohonan', ['nib', $nib])->result();
-    }
-
     public function getPemohon($id)
     {
         $this->db->join('tb_tanah', 'tb_tanah.nib = tb_permohonan.nib');

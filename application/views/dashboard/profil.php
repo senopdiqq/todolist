@@ -75,8 +75,36 @@
                                 </div>
                             </div>
                         </div>
-
-
+                        <!-- End Form Group -->
+                        <!-- Form Group -->
+                        <div class="row form-group">
+                            <label for="firstNameLabel" class="col-sm-3 col-form-label input-label">Alamat</label>
+                            <div class="col-sm-6">
+                                <div class="input-group input-group-sm-down-break">
+                                    <input type="text" class="form-control" name="alamat" value="<?= $profil->alamat ?>" autocomplete="off">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Form Group -->
+                        <!-- Form Group -->
+                        <div class="row form-group">
+                            <label for="firstNameLabel" class="col-sm-3 col-form-label input-label">No Telepon</label>
+                            <div class="col-sm-6">
+                                <div class="input-group input-group-sm-down-break">
+                                    <input type="number" class="form-control" name="no_telp" value="<?= $profil->no_telp ?>" autocomplete="off">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Form Group -->
+                        <!-- Form Group -->
+                        <div class="row form-group">
+                            <label for="firstNameLabel" class="col-sm-3 col-form-label input-label">Email</label>
+                            <div class="col-sm-6">
+                                <div class="input-group input-group-sm-down-break">
+                                    <input type="text" class="form-control" name="email" value="<?= $profil->email ?>" autocomplete="off">
+                                </div>
+                            </div>
+                        </div>
                         <!-- End Form Group -->
 
 
@@ -87,7 +115,7 @@
                     <!-- Footer -->
                     <div class="card-footer d-flex justify-content-end align-items-center">
                         <button type="submit" name="submit" class="btn btn-primary">
-                            Update <i class="tio-chevron-right"></i>
+                            <i class="tio-edit"></i> Update
                         </button>
 
                     </div>

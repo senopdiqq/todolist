@@ -14,11 +14,11 @@
         <!-- Stats -->
         <div class="row gx-2 gx-lg-3">
             <?php if ($this->session->userdata('idRole') == 1) : ?>
-                <div class="col-sm-6 col-lg-4 mb-6 mb-lg-5">
+                <div class="col-sm-6 col-lg-3 mb-6 mb-lg-5">
                     <!-- Card -->
                     <a href="<?= base_url("Dashboard/Admin/Petugas") ?>" class="card card-hover-shadow h-100">
                         <div class="card-body">
-                            <h6 class="card-subtitle">Total Petugas</h6>
+                            <h6 class="card-subtitle">Petugas</h6>
 
                             <div class="row align-items-center gx-2 mb-1">
                                 <div class="col-12">
@@ -37,11 +37,11 @@
                 </div>
             <?php endif ?>
 
-            <div class="col-sm-6 col-lg-4 mb-6 mb-lg-5">
+            <div class="col-sm-6 col-lg-3 mb-6 mb-lg-5">
                 <!-- Card -->
                 <a href="<?= $data = ($this->session->userdata('idRole') == 1) ? base_url('Dashboard/Admin/VerifPemohon') : base_url('Dashboard/Petugas/Pemohon') ?>" class=" card card-hover-shadow h-100" href="#">
                     <div class="card-body">
-                        <h6 class="card-subtitle">Total Pemohon Belum Diverifikasi</h6>
+                        <h6 class="card-subtitle">Pemohon Belum Diverifikasi</h6>
 
                         <div class="row align-items-center gx-2 mb-1">
                             <div class="col-6">
@@ -59,11 +59,11 @@
                 <!-- End Card -->
             </div>
 
-            <div class="col-sm-6 col-lg-4 mb-6 mb-lg-5">
+            <div class="col-sm-6 col-lg-3 mb-6 mb-lg-5">
                 <!-- Card -->
                 <a href="<?= $data = ($this->session->userdata('idRole') == 1) ? base_url('Dashboard/Admin/VerifPemohon') : base_url('Dashboard/Petugas/Pemohon') ?>" class="card card-hover-shadow h-100" href="#">
                     <div class="card-body">
-                        <h6 class="card-subtitle">Total Pemohon Revisi</h6>
+                        <h6 class="card-subtitle">Pemohon Revisi</h6>
 
                         <div class="row align-items-center gx-2 mb-1">
                             <div class="col-6">
@@ -81,11 +81,11 @@
                 <!-- End Card -->
             </div>
 
-            <div class="col-sm-6 col-lg-4 mb-6 mb-lg-5">
+            <div class="col-sm-6 col-lg-3 mb-6 mb-lg-5">
                 <!-- Card -->
                 <a href="<?= $data = ($this->session->userdata('idRole') == 1) ? base_url('Dashboard/Admin/VerifPemohon') : base_url('Dashboard/Petugas/Pemohon') ?>" class="card card-hover-shadow h-100" href="#">
                     <div class="card-body">
-                        <h6 class="card-subtitle">Total Pemohon Terverifikasi</h6>
+                        <h6 class="card-subtitle">Pemohon Terverifikasi</h6>
 
                         <div class="row align-items-center gx-2 mb-1">
                             <div class="col-6">
@@ -104,11 +104,11 @@
             </div>
 
             <?php if ($this->session->userdata('idRole') == 2) : ?>
-                <div class="col-sm-6 col-lg-4 mb-6 mb-lg-5">
+                <div class="col-sm-6 col-lg-3 mb-6 mb-lg-5">
                     <!-- Card -->
                     <a href="<?= base_url("Dashboard/Petugas/Kecamatan") ?>" class="card card-hover-shadow h-100" href="#">
                         <div class="card-body">
-                            <h6 class="card-subtitle">Total Kecamatan</h6>
+                            <h6 class="card-subtitle">Kecamatan</h6>
 
                             <div class="row align-items-center gx-2 mb-1">
                                 <div class="col-6">
@@ -126,11 +126,11 @@
                     <!-- End Card -->
                 </div>
 
-                <div class="col-sm-6 col-lg-4 mb-6 mb-lg-5">
+                <div class="col-sm-6 col-lg-3 mb-6 mb-lg-5">
                     <!-- Card -->
                     <a href="<?= base_url("Dashboard/Petugas/Desa") ?>" class="card card-hover-shadow h-100" href="#">
                         <div class="card-body">
-                            <h6 class="card-subtitle">Total Desa</h6>
+                            <h6 class="card-subtitle">Desa</h6>
 
                             <div class="row align-items-center gx-2 mb-1">
                                 <div class="col-6">
@@ -148,11 +148,11 @@
                     <!-- End Card -->
                 </div>
 
-                <div class="col-sm-6 col-lg-4 mb-6 mb-lg-5">
+                <div class="col-sm-6 col-lg-3 mb-6 mb-lg-5">
                     <!-- Card -->
                     <a href="<?= base_url("Dashboard/Petugas/Tanah") ?>" class="card card-hover-shadow h-100" href="#">
                         <div class="card-body">
-                            <h6 class="card-subtitle">Total Tanah</h6>
+                            <h6 class="card-subtitle">Tanah</h6>
 
                             <div class="row align-items-center gx-2 mb-1">
                                 <div class="col-6">
@@ -173,15 +173,6 @@
 
         </div>
         <!-- End Stats -->
-
-        <div class="content container-fluid">
-            <div class="row justify-content-sm-center text-center py-10">
-                <div class="col-sm-7 col-md-5">
-                    <img class="img-fluid mb-5" src="<?= base_url("./assets/svg/illustrations/graphs.svg") ?>" alt="Image Description" style="max-width: 21rem;">
-                </div>
-            </div>
-            <!-- End Row -->
-        </div>
 
 
 

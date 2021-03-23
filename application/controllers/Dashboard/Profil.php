@@ -15,13 +15,27 @@ class Profil extends CI_Controller
     {
         $data['profil'] = $this->model->getProfil();
 
-        $this->form_validation->set_rules('nama_ptsl', 'Nama PTSL', 'required', [
+        $this->form_validation->set_rules('nama_ptsl', 'Nama PTSL', 'required|trim', [
             'required' => 'Nama PTSL tidak boleh kosong !'
 
         ]);
 
+        $this->form_validation->set_rules('alamat', 'Alamat PTSL', 'required|trim', [
+            'required' => 'Alamat tidak boleh kosong !'
+        ]);
+
+        $this->form_validation->set_rules('no_telp', 'Nomor Telepon', 'required|trim|numeric|min_length[10]', [
+            'required'      => 'Nomor Telepon tidak boleh kosong !',
+            'numeric'       => 'Nomor Telepon hanya boleh angka !',
+            'min_length'    => 'Nomor Telepon minimal 11 karakter !'
+        ]);
+        $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email', [
+            'required'          => 'Email tidak boleh kosong !',
+            'valid_email'       => 'Email Harus Valid !'
+        ]);
+
         if ($this->form_validation->run() == FALSE) {
-            $arr = array('nama_ptsl');
+            $arr = array('nama_ptsl', 'alamat', 'no_telp', 'email');
             foreach ($arr as $a) {
                 if (form_error($a)) {
                     $error = form_error($a);

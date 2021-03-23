@@ -31,12 +31,18 @@ class Profil_model extends CI_Model
                 }
                 $data = [
                     'foto' => $this->upload->data('file_name'),
-                    'nama' => $this->input->post('nama_ptsl', true)
+                    'nama' => $this->input->post('nama_ptsl', true),
+                    'alamat' => $this->input->post('alamat', true),
+                    'no_telp' => $this->input->post('no_telp', true),
+                    'email' => $this->input->post('email', true)
                 ];
             }
         } else {
             $data = [
-                'nama' => $this->input->post('nama_ptsl', true)
+                'nama' => $this->input->post('nama_ptsl', true),
+                'alamat' => $this->input->post('alamat', true),
+                'no_telp' => $this->input->post('no_telp', true),
+                'email' => $this->input->post('email', true)
             ];
         }
 
