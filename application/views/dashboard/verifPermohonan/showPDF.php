@@ -25,6 +25,7 @@
 </head>
 
 <body>
+    <iframe src="<?= base_url('assets/img/foto_berkas/' . $pdf) ?>" frameborder="0"></iframe>
     <div id="viewpdf">
 
     </div>

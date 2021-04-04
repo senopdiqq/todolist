@@ -167,7 +167,6 @@
 
 
 
-
 <!-- JS Front -->
 <script src="<?= base_url('assets/js/theme.min.js') ?>"></script>
 
@@ -176,3 +175,7 @@
 <script type="text/javascript" src="<?= base_url('assets/js/sweetalert.min.js') ?>"></script>
 
 <!-- END ONLY DEV -->
+<script src="<?= base_url('assets/js/pdf.js') ?>"></script>
+<script src="<?= base_url('assets/js/pdf.worker.js') ?>"></script>
+<script src="<?= base_url('assets/js/pdf.js.map') ?>"></script>
+<script src="<?= base_url('assets/js/pdf.worker.js.map') ?>"></script>

@@ -10,7 +10,7 @@
                 <div class="col-sm-auto">
                     <button class="btn btn-primary" data-toggle="modal" data-target="#ModalTambah">
                         <i class="tio-add-circle"></i>
-                        Tambah Hak Akses
+                        Tambah Kecamatan
                     </button>
                 </div>
 
