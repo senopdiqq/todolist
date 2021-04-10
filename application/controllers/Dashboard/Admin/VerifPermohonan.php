@@ -133,6 +133,6 @@ class VerifPermohonan extends CI_Controller
 
     public function showPdf($pdf)
     {
-        $this->load->view('dashboard/verifPermohonan/showPDF', ['pdf' => $pdf]);
+        $this->load->view('dashboard/verifPermohonan/viewPdf', ['pdf' => $pdf]);
     }
 }

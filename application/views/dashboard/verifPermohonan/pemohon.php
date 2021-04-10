@@ -122,7 +122,7 @@
                                     <?php endif; ?>
                                 </td>
                                 <td class="text-center">
-                                    <a href="<?= base_url('Dashboard/Admin/VerifPermohonan/permohonan/' . $p->nib) ?>" target="_blank" class="badge badge-soft-success p-2">
+                                    <a href="<?= base_url('Dashboard/Admin/VerifPermohonan/permohonan/' . $p->idPermohonan) ?>" target="_blank" class="badge badge-soft-success p-2">
                                         <i class=" tio-edit"></i>
                                         Lihat Detail</a>
                                 </td>

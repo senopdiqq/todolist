@@ -86,7 +86,7 @@
             <!-- Card -->
 
             <!-- Card -->
-            <form action="<?= base_url('Dashboard/Admin/VerifPermohonan/revisi/' . $permohonan->nib) ?>" id="formRevisi" method="POST">
+            <form action="<?= base_url('Dashboard/Admin/VerifPermohonan/revisi/' . $permohonan->idPermohonan) ?>" id="formRevisi" method="POST">
                 <div class="card mb-3 mb-lg-5">
                     <div class="card-header">
                         <h2 class="card-title h4">Detail Permohonan</h2>
@@ -147,7 +147,7 @@
                     <!-- Footer -->
 
                     <div class="card-footer d-flex justify-content-end align-items-center">
-                        <a href="<?= base_url('Dashboard/Admin/VerifPermohonan/verified/' . $permohonan->nib) ?>" type="button" class="badge badge-soft-success p-2 mr-3 verifikasi">
+                        <a href="<?= base_url('Dashboard/Admin/VerifPermohonan/verified/' . $permohonan->idPermohonan) ?>" type="button" class="badge badge-soft-success p-2 mr-3 verifikasi">
                             <i class="tio-done"></i> Verifikasi Permohonan
                         </a>
                         <a type="submit" class="badge badge-soft-danger p-2 revisi">
