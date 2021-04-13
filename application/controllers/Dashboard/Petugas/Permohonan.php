@@ -99,6 +99,18 @@ class Permohonan extends CI_Controller
                         0
                     );
                     redirect(base_url() . 'Dashboard/Petugas/Permohonan');
+                } elseif ($init == 0) {
+                    $this->session->set_tempdata(
+                        'flash',
+                        [
+                            'title' => 'Gagal!',
+                            'text'  => 'Nib sudah didaftarkan di Permohonan',
+                            'type'  => 'error',
+
+                        ],
+                        0
+                    );
+                    redirect(base_url() . 'Dashboard/Petugas/Permohonan');
                 } else {
                     $this->session->set_tempdata(
                         'flash',

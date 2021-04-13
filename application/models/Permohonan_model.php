@@ -36,7 +36,13 @@ class Permohonan_model extends CI_Model
 
     public function store()
     {
+        $nib = $this->input->post('nib', true);
+        $get = $this->db->get_where('tb_permohonan', ['nib' => $nib])->num_rows();
 
+
+        if ($get > 0) {
+            return 0;
+        }
 
         $config['upload_path']          = './assets/img/foto_berkas/';
         $config['allowed_types']        = 'pdf';
