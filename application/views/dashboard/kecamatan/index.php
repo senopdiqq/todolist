@@ -25,7 +25,7 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <form action="<?= base_url("Dashboard/Petugas/kecamatan/store") ?>" method="POST" enctype="multipart/form-data">
+                                <form action="<?= base_url("Dashboard/Petugas/Tugas/store") ?>" method="POST" enctype="multipart/form-data">
                                     <div class="form-group">
                                         <label for="nama_kecamatan" class="control-label">Deskripsi Tugas yang akan dikerjakan</label>
                                         <input type="text" class="form-control" autocomplete="off" name="nama_kecamatan">
@@ -137,7 +137,7 @@
                                     <a href="" class="badge badge-soft-success p-2 btn-edit" data-nama="<?= $p->nama_kecamatan ?>" data-id="<?= $p->idKecamatan ?>" data-toggle="modal" data-target="#ModalEdit">
                                         <i class=" tio-edit"></i>
                                         Edit</a>
-                                    <a href="<?= base_url('Dashboard/Petugas/Kecamatan/delete/' . $p->idKecamatan) ?>"class="badge badge-soft-danger p-2 sweetalert" data-toggle="modal">
+                                    <a href="<?= base_url('Dashboard/Petugas/Tugas/delete/' . $p->idKecamatan) ?>"class="badge badge-soft-danger p-2 sweetalert" data-toggle="modal">
                                         <i class="tio-delete"></i> Tugas Selesai !
                                     </a>
 
@@ -163,7 +163,7 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form action="<?= base_url("Dashboard/Petugas/Kecamatan/update") ?>" method="POST" enctype="multipart/form-data">
+                            <form action="<?= base_url("Dashboard/Petugas/Tugas/update") ?>" method="POST" enctype="multipart/form-data">
                                 <input type="hidden" name="idKecamatan" id="editIdKecamatan">
                                 <div class="form-group">
                                     <label for="nama_kecamatan" class="control-label">Deskripsi Tugas yang akan dikerjakan</label>
