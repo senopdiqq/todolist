@@ -29,10 +29,7 @@
             <div class="row">
                 <div class="col-lg-12 d-flex justify-content-center align-items-center min-vh-lg-100">
                     <div class="w-100 pt-10 pt-lg-7 pb-7" style="max-width: 25rem;">
-                        <div class="text-center">
-                            <img src="<?= base_url('assets/img/foto_user/' . $getFoto->foto) ?>" alt="Logo" width="50%">
-                        </div>
-
+                       
                         <!-- Form -->
                         <?= form_open('auth/login') ?>
                         <div class="text-center mb-5 mt-5">
@@ -46,7 +43,7 @@
                         <div class="js-form-message form-group">
                             <label class="input-label"> Username</label>
 
-                            <input type="text" class="form-control form-control-lg" autocomplete="off" name="username" placeholder="admin" value="">
+                            <input type="text" class="form-control form-control-lg" autocomplete="off" name="username" placeholder="petugas" value="">
                         </div>
                         <!-- End Form Group -->
 

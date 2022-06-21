@@ -2,9 +2,7 @@
 
 <div class="footer">
     <div class="row justify-content-between align-items-center">
-        <div class="col">
-            <p class="font-size-sm mb-0">&copy; CopyRights <?= $this->session->userdata('nama_ptsl') . " " . date('Y') ?> All Rights Reserved </p>
-        </div>
+        
 
     </div>
 </div>
@@ -18,10 +16,10 @@
 
         swal({
                 title: "Apa Anda Yakin?",
-                text: "Saat terhapus , Data yang dihapus tidak bisa kembali lagi!",
+                text: "Saat Tugas selesai ,Tugas akan dihapus!",
                 icon: "warning",
                 buttons: {
-                    confirm: 'Hapus',
+                    confirm: 'Selesai',
                     cancel: 'Batal'
                 },
                 dangerMode: true,
@@ -36,37 +34,7 @@
     });
 </script>
 
-<script>
-    $('.sweetalertNya').click(function(e) {
 
-        e.preventDefault();
-        const href = $(this).attr('href');
-
-        swal({
-                title: "Apa Anda Yakin Akan Logout?",
-                text: "Sesi anda akan berakhir dan anda harus login ulang!",
-                icon: "warning",
-                buttons: {
-                    confirm: 'Logout',
-                    cancel: 'Batal'
-                },
-                dangerMode: true,
-            })
-            .then((willDelete) => {
-                if (willDelete) {
-                    swal({
-                        title: "Berhasil !",
-                        text: "Berhasil Logout",
-                        icon: "success",
-                    }).then((redirect) => {
-                        document.location.href = href
-                    });
-                }
-            });
-
-
-    });
-</script>
 
 <!-- JS Plugins Init. -->
 <script>
@@ -158,33 +126,7 @@
             var tagify = $.HSCore.components.HSTagify.init($(this));
         });
 
-        $('.js-tagify-avatars').each(function() {
-            var settings = $(this).attr('data-hs-tagify-options') ? JSON.parse($(this).attr('data-hs-tagify-options')) : {},
-                tagifyAvatars = $.HSCore.components.HSTagify.init($(this), {
-                    templates: {
-                        tag: function tag(tagData) {
-                            try {
-                                return "<tag title=\"" + tagData.value + "\" contenteditable=\"false\" spellcheck=\"false\" class=\"tagify__tag " + (tagData["class"] ? tagData["class"] : "") + "\" " + this.getAttributes(tagData) + ">" +
-                                    "<x title=\"remove tag\" class=\"tagify__tag__removeBtn\"></x>" +
-                                    "<div class=\"d-flex align-items-center\">" +
-                                    "" + (tagData.src ? "<img class=\"avatar avatar-xss avatar-circle mr-2\" src=\"" + tagData.src.toLowerCase() + "\">" : "") + "" +
-                                    "<span>" + tagData.value + "</span>" +
-                                    "</div>" +
-                                    "</tag>";
-                            } catch (err) {}
-                        },
-                        dropdownItem: function dropdownItem(tagData) {
-                            try {
-                                return "<div " + this.getAttributes(tagData) + " class=\"tagify__dropdown__item " + (tagData["class"] ? tagData["class"] : "") + "\">" +
-                                    "<img class=\"avatar avatar-xss avatar-circle mr-2\" src=\"" + tagData.src.toLowerCase() + "\">" +
-                                    "<span>" + tagData.value + "</span>" +
-                                    "</div>";
-                            } catch (err) {}
-                        }
-                    }
-                }).addTags(settings.whitelist.slice(0, 1));
-        });
-
+      
         // initialization of dropzone file attach module
         $('.dropzone-custom').each(function() {
             var dropzone = $.HSCore.components.HSDropzone.init('#' + $(this).attr('id'));

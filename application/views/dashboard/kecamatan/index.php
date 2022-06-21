@@ -5,12 +5,12 @@
         <div class="page-header">
             <div class="row align-items-center">
                 <div class="col-sm mb-2 mb-sm-0">
-                    <h1 class="page-header-title">Halaman Kecamatan</h1>
+                    <h1 class="page-header-title">TO DO LIST</h1>
                 </div>
                 <div class="col-sm-auto">
                     <button class="btn btn-primary" data-toggle="modal" data-target="#ModalTambah">
                         <i class="tio-add-circle"></i>
-                        Tambah Kecamatan
+                        Tambah Tugas
                     </button>
                 </div>
 
@@ -19,7 +19,7 @@
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Tambah Kecamatan</h5>
+                                <h5 class="modal-title" id="exampleModalLabel">Tambah Tugas</h5>
                                 <button type="button" class="btn btn-xs btn-icon btn-ghost-secondary" data-dismiss="modal" aria-label="Close">
                                     <i class="tio-clear tio-lg"></i>
                                 </button>
@@ -27,7 +27,7 @@
                             <div class="modal-body">
                                 <form action="<?= base_url("Dashboard/Petugas/kecamatan/store") ?>" method="POST" enctype="multipart/form-data">
                                     <div class="form-group">
-                                        <label for="nama_kecamatan" class="control-label">Nama Kecamatan</label>
+                                        <label for="nama_kecamatan" class="control-label">Deskripsi Tugas yang akan dikerjakan</label>
                                         <input type="text" class="form-control" autocomplete="off" name="nama_kecamatan">
                                     </div>
 
@@ -53,7 +53,7 @@
             <!-- Card -->
             <div class="card h-100">
                 <div class="card-body">
-                    <h6 class="card-subtitle mb-2">Total Kecamatan</h6>
+                    <h6 class="card-subtitle mb-2">Total Tugas</h6>
 
                     <div class="row align-items-center gx-2">
                         <div class="col">
@@ -85,7 +85,7 @@
                                         <i class="tio-search"></i>
                                     </div>
                                 </div>
-                                <input id="datatableSearch" type="search" autocomplete="off" class="form-control" placeholder="Cari Kecamatan">
+                                <input id="datatableSearch" type="search" autocomplete="off" class="form-control" placeholder="Cari Tugas">
                             </div>
                             <!-- End Search -->
                         </form>
@@ -116,7 +116,7 @@
                     <thead class="thead-light">
                         <tr>
                             <th>No</th>
-                            <th>Nama Kecamatan</th>
+                            <th>Deskripsi Tugas</th>
                             <th>Aksi</th>
                             </th>
                         </tr>
@@ -137,11 +137,12 @@
                                     <a href="" class="badge badge-soft-success p-2 btn-edit" data-nama="<?= $p->nama_kecamatan ?>" data-id="<?= $p->idKecamatan ?>" data-toggle="modal" data-target="#ModalEdit">
                                         <i class=" tio-edit"></i>
                                         Edit</a>
-                                    <a href="<?= base_url('Dashboard/Petugas/Kecamatan/delete/' . $p->idKecamatan) ?>" class="badge badge-soft-danger p-2 sweetalert" data-toggle="modal">
-                                        <i class="tio-delete"></i> Hapus
+                                    <a href="<?= base_url('Dashboard/Petugas/Kecamatan/delete/' . $p->idKecamatan) ?>"class="badge badge-soft-danger p-2 sweetalert" data-toggle="modal">
+                                        <i class="tio-delete"></i> Tugas Selesai !
                                     </a>
 
                                 </td>
+
 
                             </tr>
                         <?php $no++;
@@ -156,7 +157,7 @@
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Edit Kecamatan</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">Edit Tugas</h5>
                             <button type="button" class="btn btn-xs btn-icon btn-ghost-secondary" data-dismiss="modal" aria-label="Close">
                                 <i class="tio-clear tio-lg"></i>
                             </button>
@@ -165,7 +166,7 @@
                             <form action="<?= base_url("Dashboard/Petugas/Kecamatan/update") ?>" method="POST" enctype="multipart/form-data">
                                 <input type="hidden" name="idKecamatan" id="editIdKecamatan">
                                 <div class="form-group">
-                                    <label for="nama_kecamatan" class="control-label">Nama Kecamatan</label>
+                                    <label for="nama_kecamatan" class="control-label">Deskripsi Tugas yang akan dikerjakan</label>
                                     <input type="text" id="editKecamatan" class="form-control" autocomplete="off" name="nama_kecamatan">
                                 </div>
                         </div>

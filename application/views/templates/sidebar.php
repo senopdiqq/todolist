@@ -12,17 +12,12 @@
                     <!-- Logo -->
 
 
-                    <a class="navbar-brand" href="<?= base_url('Dashboard/home') ?>" aria-label="Front">
-                        <img class="navbar-brand-logo" style="min-width: 3.5rem;max-width: 3.5rem;" src="<?= base_url('assets/img/foto_user/' . $this->session->userdata('foto_ptsl')) ?>" alt="Logo">
-                        <img class="navbar-brand-logo-mini" src="<?= base_url('assets/img/foto_user/' . $this->session->userdata('foto_ptsl')) ?>" alt="Logo">
-                    </a>
+
 
                     <!-- End Logo -->
 
                     <!-- Navbar Vertical Toggle -->
-                    <button type="button" class="js-navbar-vertical-aside-toggle-invoker navbar-vertical-aside-toggle btn btn-icon btn-xs btn-ghost-dark">
-                        <i class="tio-clear tio-lg"></i>
-                    </button>
+                    
                     <!-- End Navbar Vertical Toggle -->
                 </div>
 
@@ -30,91 +25,11 @@
                 <div class="navbar-vertical-content">
                     <ul class="navbar-nav navbar-nav-lg nav-tabs">
                         <!-- Dashboards -->
-                        <li class="navbar-vertical-aside-has-menu nav-item">
-                            <a class="js-navbar-vertical-aside-menu-link nav-link " href="<?= base_url('Dashboard/home') ?>" title="Dashboards">
-                                <i class="tio-home-vs-1-outlined nav-icon"></i>
-                                <span class="nav-compact-title text-truncate">Dashboard</span>
-                            </a>
-                        </li>
+                        
                         <!-- End Dashboards -->
                         <!-- BUAT ADMINISTRATOR -->
-                        <li class="nav-item">
-                            <small class="nav-subtitle" title="Menu Utama">Menu Utama</small>
-                            <small class="tio-more-horizontal nav-subtitle-replacer"></small>
-                        </li>
 
-                        <li class="navbar-vertical-aside-has-menu ">
-                            <a class="js-navbar-vertical-aside-menu-link nav-link nav-link-toggle " href="javascript:;" title="Master">
-                                <i class="tio-apps nav-icon"></i>
-                                <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">Master</span>
-                            </a>
-                            <!-- Menu Admin -->
-                            <ul class="js-navbar-vertical-aside-submenu nav nav-sub">
-                                <?php if ($this->session->userdata('idRole') == '1') : ?>
-                                    <li class="nav-item">
-                                        <a class="nav-link " href="<?= base_url('Dashboard/Admin/Petugas') ?>" title="Data Petugas">
-                                            <span class="tio-circle nav-indicator-icon"></span>
-                                            <span class="text-truncate">Data Petugas</span>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link " href="<?= base_url('Dashboard/Admin/VerifPermohonan') ?>" title="Data Petugas">
-                                            <span class="tio-circle nav-indicator-icon"></span>
-                                            <span class="text-truncate">Daftar Desa</span>
-                                        </a>
-                                    </li>
-                                <?php endif; ?>
-
-                                <?php if ($this->session->userdata('idRole') == '2') : ?>
-                                    <li class="nav-item">
-                                        <a class="nav-link " href="<?= base_url('Dashboard/Petugas/Kecamatan') ?>" title="Daftar Kecamatan">
-                                            <span class="tio-circle nav-indicator-icon"></span>
-                                            <span class="text-truncate">Daftar Kecamatan</span>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link " href="<?= base_url('Dashboard/Petugas/Pemohon') ?>" title="Daftar Pemohon">
-                                            <span class="tio-circle nav-indicator-icon"></span>
-                                            <span class="text-truncate">Daftar Pemohon</span>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link " href="<?= base_url('Dashboard/Petugas/Permohonan/index') ?>" title="Daftar Permohonan">
-                                            <span class="tio-circle nav-indicator-icon"></span>
-                                            <span class="text-truncate">Daftar Permohonan</span>
-                                        </a>
-                                    </li>
-
-                                    <li class="nav-item">
-                                        <a class="nav-link " href="<?= base_url('Dashboard/Petugas/Desa/index') ?>" title="Daftar Desa">
-                                            <span class="tio-circle nav-indicator-icon"></span>
-                                            <span class="text-truncate">Daftar Desa</span>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link " href="<?= base_url('Dashboard/Petugas/Tanah/index') ?>" title="Daftar Desa">
-                                            <span class="tio-circle nav-indicator-icon"></span>
-                                            <span class="text-truncate">Daftar Tanah</span>
-                                        </a>
-                                    </li>
-                                <?php endif; ?>
-                            </ul>
-                            <?php if ($this->session->userdata("idRole") == '1') : ?>
-                        <li class="navbar-vertical-aside-has-menu nav-item">
-                            <a class="js-navbar-vertical-aside-menu-link nav-link " href="<?= base_url('Dashboard/Admin/VerifPemohon') ?>" title="Verifikasi Pemohon">
-                                <i class="tio-user nav-icon"></i>
-                                <span class="nav-compact-title text-truncate">Verifikasi Pemohon</span>
-                            </a>
-                        </li>
-
-                        <li class="navbar-vertical-aside-has-menu nav-item">
-                            <a class="js-navbar-vertical-aside-menu-link nav-link " href="<?= base_url('Dashboard/Admin/CetakBuktiVerif') ?>" title="Cetak Bukti Verifikasi">
-                                <i class="tio-print nav-icon"></i>
-                                <span class="nav-compact-title text-truncate">Cetak Bukti Verifikasi</span>
-                            </a>
-                        </li>
-                    <?php endif; ?>
-                    </li>
+                 
 
 
 

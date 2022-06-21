@@ -28,7 +28,7 @@ class Auth_model extends CI_Model
                     'nama_ptsl'     => $ptsl->nama
                 ];
                 $this->session->set_userdata($data);
-                redirect(base_url() . 'dashboard/home');
+                redirect(base_url() . 'Dashboard/Petugas/Tugas');
             } else {
                 $this->session->set_tempdata(
                     'flash',

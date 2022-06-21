@@ -1,182 +1,235 @@
-<main id="content" role="main" class="main pointer-event">
+<main id="content" role="main" class="main">
     <!-- Content -->
     <div class="content container-fluid">
         <!-- Page Header -->
         <div class="page-header">
             <div class="row align-items-center">
                 <div class="col-sm mb-2 mb-sm-0">
-                    <h1 class="page-header-title">Halo! Selamat Datang <?= $this->session->userdata('nama') ?></h1>
+                    <h1 class="page-header-title">TO DO LIST</h1>
                 </div>
+                <div class="col-sm-auto">
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#ModalTambah">
+                        <i class="tio-add-circle"></i>
+                        Tambah Tugas
+                    </button>
+                </div>
+
+                <!-- Modal Tambah -->
+                <div class="modal fade" id="ModalTambah" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Tambah Tugas</h5>
+                                <button type="button" class="btn btn-xs btn-icon btn-ghost-secondary" data-dismiss="modal" aria-label="Close">
+                                    <i class="tio-clear tio-lg"></i>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form action="<?= base_url("Dashboard/Petugas/kecamatan/store") ?>" method="POST" enctype="multipart/form-data">
+                                    <div class="form-group">
+                                        <label for="nama_kecamatan" class="control-label">Deskripsi Tugas yang akan dikerjakan</label>
+                                        <input type="text" class="form-control" autocomplete="off" name="nama_kecamatan">
+                                    </div>
+
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" name="tambah" class="btn btn-primary">
+                                    <i class="tio-add-circle"></i>
+                                    Tambah Data</button>
+                                <button type="button" class="btn btn-white" data-dismiss="modal">Tutup</button>
+                            </div>
+                        </div>
+                    </div>
+                    </form>
+                </div>
+                <!-- End Modal -->
 
             </div>
         </div>
-        <!-- End Page Header -->
-        <!-- Stats -->
-        <div class="row gx-2 gx-lg-3">
-            <?php if ($this->session->userdata('idRole') == 1) : ?>
-                <div class="col-sm-6 col-lg-3 mb-6 mb-lg-5">
-                    <!-- Card -->
-                    <a href="<?= base_url("Dashboard/Admin/Petugas") ?>" class="card card-hover-shadow h-100">
-                        <div class="card-body">
-                            <h6 class="card-subtitle">Petugas</h6>
 
-                            <div class="row align-items-center gx-2 mb-1">
-                                <div class="col-12">
-                                    <span class="card-title h2"><?= $petugas->num_rows() ?></span>
-                                </div>
+        <!-- Card -->
+        <div class="col-sm-6 col-lg-3 mb-3 mb-lg-5">
+            <!-- Card -->
+            <div class="card h-100">
+                <div class="card-body">
+                    <h6 class="card-subtitle mb-2">Total Tugas</h6>
 
-                            </div>
-                            <!-- End Row -->
+                    <div class="row align-items-center gx-2">
+                        <div class="col">
+                            <span class="js-counter display-4 text-dark"><?= count($kecamatan); ?></span>
+                        </div>
 
-                            <span class="btn btn-soft-primary">
-                                <i class="tio-user"></i>
+                        <div class="col-auto">
+                            <span class="btn btn-soft-success p-1">
+                                <i class="tio-group-equal"></i>
                             </span>
                         </div>
-                    </a>
-                    <!-- End Card -->
-                </div>
-            <?php endif ?>
-
-            <div class="col-sm-6 col-lg-3 mb-6 mb-lg-5">
-                <!-- Card -->
-                <a href="<?= $data = ($this->session->userdata('idRole') == 1) ? base_url('Dashboard/Admin/VerifPemohon') : base_url('Dashboard/Petugas/Pemohon') ?>" class=" card card-hover-shadow h-100" href="#">
-                    <div class="card-body">
-                        <h6 class="card-subtitle">Pemohon Belum Diverifikasi</h6>
-
-                        <div class="row align-items-center gx-2 mb-1">
-                            <div class="col-6">
-                                <span class="card-title h2"><?= $pemohon_belum_ver->num_rows() ?></span>
-                            </div>
-
-                        </div>
-                        <!-- End Row -->
-
-                        <span class="btn btn-soft-danger">
-                            <i class="tio-group-equal"></i>
-                        </span>
                     </div>
-                </a>
-                <!-- End Card -->
-            </div>
-
-            <div class="col-sm-6 col-lg-3 mb-6 mb-lg-5">
-                <!-- Card -->
-                <a href="<?= $data = ($this->session->userdata('idRole') == 1) ? base_url('Dashboard/Admin/VerifPemohon') : base_url('Dashboard/Petugas/Pemohon') ?>" class="card card-hover-shadow h-100" href="#">
-                    <div class="card-body">
-                        <h6 class="card-subtitle">Pemohon Revisi</h6>
-
-                        <div class="row align-items-center gx-2 mb-1">
-                            <div class="col-6">
-                                <span class="card-title h2"><?= $pemohon_revisi->num_rows() ?></span>
-                            </div>
-
-                        </div>
-                        <!-- End Row -->
-
-                        <span class="btn btn-soft-warning">
-                            <i class="tio-group-equal"></i>
-                        </span>
-                    </div>
-                </a>
-                <!-- End Card -->
-            </div>
-
-            <div class="col-sm-6 col-lg-3 mb-6 mb-lg-5">
-                <!-- Card -->
-                <a href="<?= $data = ($this->session->userdata('idRole') == 1) ? base_url('Dashboard/Admin/VerifPemohon') : base_url('Dashboard/Petugas/Pemohon') ?>" class="card card-hover-shadow h-100" href="#">
-                    <div class="card-body">
-                        <h6 class="card-subtitle">Pemohon Terverifikasi</h6>
-
-                        <div class="row align-items-center gx-2 mb-1">
-                            <div class="col-6">
-                                <span class="card-title h2"><?= $pemohon_terver->num_rows() ?></span>
-                            </div>
-
-                        </div>
-                        <!-- End Row -->
-
-                        <span class="btn btn-soft-success">
-                            <i class="tio-group-equal"></i>
-                        </span>
-                    </div>
-                </a>
-                <!-- End Card -->
-            </div>
-
-            <?php if ($this->session->userdata('idRole') == 2) : ?>
-                <div class="col-sm-6 col-lg-3 mb-6 mb-lg-5">
-                    <!-- Card -->
-                    <a href="<?= base_url("Dashboard/Petugas/Kecamatan") ?>" class="card card-hover-shadow h-100" href="#">
-                        <div class="card-body">
-                            <h6 class="card-subtitle">Kecamatan</h6>
-
-                            <div class="row align-items-center gx-2 mb-1">
-                                <div class="col-6">
-                                    <span class="card-title h2"><?= $kecamatan->num_rows() ?></span>
-                                </div>
-
-                            </div>
-                            <!-- End Row -->
-
-                            <span class="btn btn-soft-dark">
-                                <i class="tio-city"></i>
-                            </span>
-                        </div>
-                    </a>
-                    <!-- End Card -->
+                    <!-- End Row -->
                 </div>
-
-                <div class="col-sm-6 col-lg-3 mb-6 mb-lg-5">
-                    <!-- Card -->
-                    <a href="<?= base_url("Dashboard/Petugas/Desa") ?>" class="card card-hover-shadow h-100" href="#">
-                        <div class="card-body">
-                            <h6 class="card-subtitle">Desa</h6>
-
-                            <div class="row align-items-center gx-2 mb-1">
-                                <div class="col-6">
-                                    <span class="card-title h2"><?= $desa->num_rows() ?></span>
-                                </div>
-
-                            </div>
-                            <!-- End Row -->
-
-                            <span class="btn btn-soft-info">
-                                <i class="tio-home-vs"></i>
-                            </span>
-                        </div>
-                    </a>
-                    <!-- End Card -->
-                </div>
-
-                <div class="col-sm-6 col-lg-3 mb-6 mb-lg-5">
-                    <!-- Card -->
-                    <a href="<?= base_url("Dashboard/Petugas/Tanah") ?>" class="card card-hover-shadow h-100" href="#">
-                        <div class="card-body">
-                            <h6 class="card-subtitle">Tanah</h6>
-
-                            <div class="row align-items-center gx-2 mb-1">
-                                <div class="col-6">
-                                    <span class="card-title h2"><?= $tanah->num_rows() ?></span>
-                                </div>
-
-                            </div>
-                            <!-- End Row -->
-
-                            <span class="btn btn-soft-primary">
-                                <i class="tio-map"></i>
-                            </span>
-                        </div>
-                    </a>
-                    <!-- End Card -->
-                </div>
-            <?php endif ?>
-
+            </div>
+            <!-- End Card -->
         </div>
-        <!-- End Stats -->
+        <!-- Card -->
+        <div class="card">
+            <!-- Header -->
+            <div class="card-header">
+                <div class="row justify-content-between align-items-center flex-grow-1">
+                    <div class="col-sm-6 col-md-4 mb-3 mb-sm-0">
+                        <form>
+                            <!-- Search -->
+                            <div class="input-group input-group-merge input-group-flush">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        <i class="tio-search"></i>
+                                    </div>
+                                </div>
+                                <input id="datatableSearch" type="search" autocomplete="off" class="form-control" placeholder="Cari Tugas">
+                            </div>
+                            <!-- End Search -->
+                        </form>
+                    </div>
+                </div>
+                <!-- End Row -->
+            </div>
+            <!-- End Header -->
+
+            <!-- Table -->
+            <div class="table-responsive datatable-custom">
+                <table id="datatable" class="table table-lg table-borderless table-thead-bordered table-nowrap table-align-middle card-table" data-hs-datatables-options='{
+                     "columnDefs": [{
+                        "targets": [0, 2],
+                        "orderable": false
+                      }],
+                     "order": [],
+                     "info": {
+                       "totalQty": "#datatableWithPaginationInfoTotalQty"
+                     },
+                     "search": "#datatableSearch",
+                     "entries": "#datatableEntries",
+                     "pageLength": 15,
+                     "isResponsive": false,
+                     "isShowPaging": false,
+                     "pagination": "datatablePagination"
+                   }'>
+                    <thead class="thead-light">
+                        <tr>
+                            <th>No</th>
+                            <th>Deskripsi Tugas</th>
+                            <th>Aksi</th>
+                            </th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <?php
+                        $no = 1;
+                        foreach ($kecamatan as $p) :
+
+                        ?>
+
+                            <tr role="row" class="even">
+                                <td>
+                                    <?= $no; ?> </td>
+                                <td><?= $p->nama_kecamatan; ?></td>
+                                <td>
+                                    <a href="" class="badge badge-soft-success p-2 btn-edit" data-nama="<?= $p->nama_kecamatan ?>" data-id="<?= $p->idKecamatan ?>" data-toggle="modal" data-target="#ModalEdit">
+                                        <i class=" tio-edit"></i>
+                                        Edit</a>
+                                    <a href="<?= base_url('Dashboard/Petugas/Kecamatan/delete/' . $p->idKecamatan) ?>"class="badge badge-soft-danger p-2 sweetalert" data-toggle="modal">
+                                        <i class="tio-delete"></i> Tugas Selesai !
+                                    </a>
+
+                                </td>
 
 
+                            </tr>
+                        <?php $no++;
+                        endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
+            <!-- End Table -->
 
+            <!-- Modal Edit -->
+            <div class="modal fade" id="ModalEdit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Edit Tugas</h5>
+                            <button type="button" class="btn btn-xs btn-icon btn-ghost-secondary" data-dismiss="modal" aria-label="Close">
+                                <i class="tio-clear tio-lg"></i>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="<?= base_url("Dashboard/Petugas/Kecamatan/update") ?>" method="POST" enctype="multipart/form-data">
+                                <input type="hidden" name="idKecamatan" id="editIdKecamatan">
+                                <div class="form-group">
+                                    <label for="nama_kecamatan" class="control-label">Deskripsi Tugas yang akan dikerjakan</label>
+                                    <input type="text" id="editKecamatan" class="form-control" autocomplete="off" name="nama_kecamatan">
+                                </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" name="tambah" class="btn btn-success">
+                                <i class="tio-edit"></i>
+                                Edit Data</button>
+                            <button type="button" class="btn btn-white" data-dismiss="modal">Tutup</button>
+                        </div>
+                    </div>
+                </div>
+                </form>
+            </div>
+            <!-- End Modal -->
+
+            <!-- Footer -->
+            <div class="card-footer">
+                <!-- Pagination -->
+                <div class="row justify-content-center justify-content-sm-between align-items-sm-center">
+                    <div class="col-sm mb-2 mb-sm-0">
+                        <div class="d-flex justify-content-center justify-content-sm-start align-items-center">
+                            <span class="mr-2">Showing:</span>
+
+                            <!-- Select -->
+                            <select id="datatableEntries" class="js-select2-custom" data-hs-select2-options='{
+                            "minimumResultsForSearch": "Infinity",
+                            "customClass": "custom-select custom-select-sm custom-select-borderless",
+                            "dropdownAutoWidth": true,
+                            "width": true
+                          }'>
+                                <option value="10">10</option>
+                                <option value="15" selected>15</option>
+                                <option value="20">20</option>
+                            </select>
+                            <!-- End Select -->
+
+                            <span class="text-secondary mr-2">of</span>
+
+                            <!-- Pagination Quantity -->
+                            <span id="datatableWithPaginationInfoTotalQty"></span>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-auto">
+                        <div class="d-flex justify-content-center justify-content-sm-end">
+                            <!-- Pagination -->
+                            <nav id="datatablePagination" aria-label="Activity pagination"></nav>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Pagination -->
+            </div>
+            <!-- End Footer -->
+        </div>
+        <!-- End Card -->
     </div>
     <!-- End Content -->
+
+    <script>
+        $('.btn-edit').click(function() {
+            $('#editIdKecamatan').val($(this).data('id'))
+            $('#editKecamatan').val($(this).data('nama'))
+        })
+    </script>
 
 </main>
